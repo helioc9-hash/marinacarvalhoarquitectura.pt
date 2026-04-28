@@ -1215,6 +1215,7 @@
       <p class="contact-form-title">Envie-nos uma mensagem</p>
       <form
         class="contact-form"
+        id="contactForm"
         action="https://formspree.io/f/xojygalq"
         method="POST"
       >
@@ -1348,5 +1349,41 @@
     });
   }
 </script>
+ <script>
+  // Script para o formulário não sair da página
+  const form = document.getElementById("contactForm");
+  const successMsg = document.getElementById("formSuccess");
+  const errorMsg = document.getElementById("formError");
+
+  if (form) {
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault(); // Impede a saída do site
+      
+      const data = new FormData(event.target);
+      
+      fetch(event.target.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          successMsg.style.display = "block"; // Mostra mensagem de sucesso
+          errorMsg.style.display = "none";
+          form.reset(); // Limpa os campos
+        } else {
+          errorMsg.style.display = "block"; // Mostra mensagem de erro
+          successMsg.style.display = "none";
+        }
+      }).catch(error => {
+        errorMsg.style.display = "block";
+        successMsg.style.display = "none";
+      });
+    });
+  }
+</script>
+</body>
+</html>
 </body>
 </html>
