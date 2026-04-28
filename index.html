@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Marina Carvalho Arquitectura — Gabinete de arquitectura sediado em Montijo. Projectos de arquitectura, consultoria, fiscalização e projectos de especialidades.">
+<meta name="keywords" content="arquitectura, arquitecto, Montijo, projecto, licenciamento, fiscalização, consultoria">
+<meta property="og:title" content="Marina Carvalho Arquitectura">
+<meta property="og:description" content="Arquitectura que transforma sonhos em espaço. Gabinete sediado em Montijo.">
+<meta property="og:type" content="website">
+<title>Marina Carvalho Arquitectura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE7DB;
+    --warm-dark: #1C1A17;
+    --stone: #8C8072;
+    --accent: #C4A882;
+    --accent-dark: #A88C68;
+    --light-line: rgba(140,128,114,0.2);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--warm-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVEGAÇÃO ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(245,240,232,0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--light-line);
+    transition: padding 0.3s, box-shadow 0.3s;
+  }
+
+  nav.scrolled {
+    padding: 1rem 4rem;
+    box-shadow: 0 2px 30px rgba(28,26,23,0.07);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm-dark);
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .nav-logo span {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    font-family: var(--sans);
+    font-weight: 300;
+    color: var(--stone);
+    margin-top: 3px;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--warm-dark); }
+
+  .nav-cta {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.18em !important;
+    color: var(--cream) !important;
+    background: var(--warm-dark);
+    padding: 0.65rem 1.4rem;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent); color: var(--cream) !important; }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--warm-dark);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--cream);
+    z-index: 190;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--warm-dark);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover { color: var(--accent); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 55% 45%;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 9rem 5rem 6rem 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5.5vw, 5.2rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--warm-dark);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 0.88rem;
+    line-height: 1.95;
+    color: var(--stone);
+    max-width: 400px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--warm-dark);
+    border: 1px solid var(--warm-dark);
+    padding: 1rem 2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-dark);
+    background: transparent;
+    border: 1px solid rgba(140,128,114,0.35);
+    padding: 1rem 1.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: #26221E;
+  }
+
+  /* Geometric texture for hero right */
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(196,168,130,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(196,168,130,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .hero-cross {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    opacity: 0.07;
+  }
+
+  .hero-cross::before,
+  .hero-cross::after {
+    content: '';
+    position: absolute;
+    background: var(--cream);
+  }
+
+  .hero-cross::before { width: 1px; height: 100%; left: 50%; }
+  .hero-cross::after  { width: 100%; height: 1px; top: 50%; }
+
+  .hero-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(196,168,130,0.08);
+    border-radius: 50%;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 55%;
+    background: linear-gradient(to top, rgba(20,18,15,0.7), transparent);
+  }
+
+  .hero-caption {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+  }
+
+  .hero-caption-tag {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-caption-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,240,232,0.85);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-scroll span {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.5);
+    writing-mode: vertical-rl;
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, var(--accent));
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.5); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ─── SHARED SECTION ─── */
+  section { padding: 7rem 4rem; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 4.5rem;
+  }
+
+  .section-num {
+    font-family: var(--serif);
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--light-line);
+    max-width: 10rem;
+  }
+
+  /* ─── SOBRE ─── */
+  #sobre {
+    background: var(--warm-dark);
+    color: var(--cream);
+  }
+
+  #sobre .section-title { color: var(--cream); }
+  #sobre .section-line { background: rgba(196,168,130,0.2); }
+
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .sobre-text p {
+    font-size: 0.92rem;
+    line-height: 2;
+    font-weight: 300;
+    color: rgba(245,240,232,0.65);
+    margin-bottom: 1.25rem;
+  }
+
+  .sobre-quote {
+    font-family: var(--serif) !important;
+    font-size: 1.35rem !important;
+    font-style: italic;
+    color: var(--accent) !important;
+    line-height: 1.65 !important;
+    margin-bottom: 2rem !important;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--accent);
+  }
+
+  .sobre-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(196,168,130,0.15);
+  }
+
+  .stat-card {
+    background: var(--warm-dark);
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(196,168,130,0.15);
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+  }
+
+  .stat-wide {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(196,168,130,0.15);
+  }
+
+  .stat-wide .stat-num {
+    font-size: 1.6rem;
+    font-style: italic;
+  }
+
+  /* ─── SERVIÇOS ─── */
+  #servicos { background: var(--cream); }
+
+  .servicos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--light-line);
+  }
+
+  .servico-item {
+    padding: 3.5rem;
+    border-right: 1px solid var(--light-line);
+    border-bottom: 1px solid var(--light-line);
+    position: relative;
+    transition: background 0.3s;
+    overflow: hidden;
+  }
+
+  .servico-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 0.4s;
+  }
+
+  .servico-item:hover { background: rgba(196,168,130,0.05); }
+  .servico-item:hover::before { width: 100%; }
+
+  .servico-num {
+    font-family: var(--serif);
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .servico-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    line-height: 1.15;
+    color: var(--warm-dark);
+  }
+
+  .servico-desc {
+    font-size: 0.84rem;
+    line-height: 1.9;
+    color: var(--stone);
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  .servico-sub {
+    list-style: none;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--light-line);
+  }
+
+  .servico-sub li {
+    font-size: 0.78rem;
+    color: var(--stone);
+    padding: 0.4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    border-bottom: 1px solid rgba(140,128,114,0.1);
+    font-weight: 300;
+  }
+
+  .servico-sub li:last-child { border-bottom: none; }
+
+  .servico-sub li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  /* ─── PORTFOLIO ─── */
+  #portfolio { background: #EDE7DB; }
+
+  .portfolio-intro {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--stone);
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-rows: 260px 260px;
+    gap: 8px;
+  }
+
+  .portfolio-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .portfolio-item:first-child {
+    grid-row: 1 / 3;
+  }
+
+  .portfolio-bg {
+    position: absolute;
+    inset: 0;
+    background-color: #2d2822;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Placeholder pattern for images */
+  .portfolio-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(196,168,130,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(196,168,130,0.04) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .portfolio-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0.2;
+    transition: opacity 0.3s;
+  }
+
+  .portfolio-placeholder-icon {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .portfolio-placeholder-text {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .portfolio-item:hover .portfolio-bg {
+    transform: scale(1.05);
+  }
+
+  .portfolio-item:hover .portfolio-placeholder {
+    opacity: 0.12;
+  }
+
+  .portfolio-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 2rem 1.75rem 1.75rem;
+    background: linear-gradient(to top, rgba(20,17,13,0.88) 0%, rgba(20,17,13,0.4) 60%, transparent 100%);
+    transform: translateY(40%);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .portfolio-item:hover .portfolio-overlay {
+    transform: translateY(0);
+  }
+
+  .portfolio-tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .portfolio-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.9);
+    line-height: 1.3;
+  }
+
+  .portfolio-note {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--light-line);
+    background: rgba(196,168,130,0.06);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .portfolio-note-icon {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--accent);
+    font-style: italic;
+    flex-shrink: 0;
+  }
+
+  .portfolio-note p {
+    font-size: 0.78rem;
+    color: var(--stone);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .portfolio-note strong {
+    color: var(--warm-dark);
+    font-weight: 500;
+  }
+
+  /* ─── CONTACTOS ─── */
+  #contactos {
+    background: var(--warm-dark);
+    color: var(--cream);
+  }
+
+  #contactos .section-title { color: var(--cream); }
+  #contactos .section-line { background: rgba(196,168,130,0.2); }
+
+  .contactos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contactos-intro {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .contact-list { display: flex; flex-direction: column; gap: 2rem; }
+
+  .contact-entry-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-entry-value {
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.75);
+    font-weight: 300;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  a.contact-entry-value:hover { color: var(--accent); }
+
+  .social-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(196,168,130,0.1);
+  }
+
+  .social-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(245,240,232,0.1);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .social-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── FORMULÁRIO ─── */
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .contact-form-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .form-group label {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(245,240,232,0.1);
+    color: var(--cream);
+    padding: 0.9rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    outline: none;
+    resize: none;
+    transition: border-color 0.25s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--accent);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(245,240,232,0.18);
+  }
+
+  .form-group select option {
+    background: var(--warm-dark);
+    color: var(--cream);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .btn-submit {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    font-weight: 400;
+  }
+
+  .form-note {
+    font-size: 0.68rem;
+    color: rgba(245,240,232,0.2);
+    line-height: 1.6;
+    margin-top: 0.25rem;
+  }
+
+  /* Form success/error messages */
+  .form-msg {
+    display: none;
+    padding: 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    border: 1px solid;
+  }
+
+  .form-msg.success {
+    border-color: rgba(196,168,130,0.4);
+    color: var(--accent);
+    background: rgba(196,168,130,0.05);
+  }
+
+  .form-msg.error {
+    border-color: rgba(200,80,60,0.3);
+    color: #e88;
+    background: rgba(200,80,60,0.05);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #100E0C;
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.3);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.15);
+    width: 100%;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(245,240,232,0.05);
+  }
+
+  /* ─── ANIMAÇÕES ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.5rem; }
+    nav.scrolled { padding: 0.9rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    section { padding: 5rem 1.5rem; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 8rem 1.5rem 3rem; }
+    .hero-right { height: 300px; }
+    .hero-title { font-size: clamp(2.6rem, 10vw, 3.5rem); }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+
+    .sobre-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+    .sobre-visual { grid-template-columns: 1fr 1fr; }
+
+    .servicos-grid { grid-template-columns: 1fr; }
+    .servico-item { border-right: none; }
+
+    .portfolio-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 200px 200px 200px;
+    }
+    .portfolio-item:first-child { grid-row: auto; grid-column: 1 / -1; }
+    .portfolio-overlay { transform: translateY(0); }
+
+    .contactos-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+
+    footer { flex-direction: column; align-items: flex-start; }
+    .footer-links { flex-wrap: wrap; gap: 1rem; }
+  }
+
+  @media (max-width: 500px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .portfolio-item { height: 220px; }
+    .sobre-visual { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVEGAÇÃO -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    Marina Carvalho
+    <span>Arquitectura</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contactos" class="nav-cta">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="closeMobile()">Sobre</a>
+  <a href="#servicos" onclick="closeMobile()">Serviços</a>
+  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+  <a href="#contactos" onclick="closeMobile()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section style="padding:0;" class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Gabinete de Arquitectura · Montijo</p>
+    <h1 class="hero-title">
+      Arquitectura<br>
+      que <em>transforma</em><br>
+      sonhos em espaço.
+    </h1>
+    <p class="hero-desc">
+      Cada projecto é único. Desenvolvemos soluções personalizadas com rigor, criatividade e atenção ao detalhe — do estudo prévio à conclusão da obra.
+    </p>
+    <div class="hero-actions">
+      <a href="#contactos" class="btn-primary">Iniciar projecto →</a>
+      <a href="#portfolio" class="btn-ghost">Ver portfolio</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-cross"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-caption">
+      <div class="hero-caption-tag">Projecto de Arquitectura</div>
+      <div class="hero-caption-title">Moradia Unifamiliar com Piscina</div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Sobre nós</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="sobre-grid">
+    <div class="sobre-text reveal">
+      <p class="sobre-quote">
+        "Arquitectura como forma de transformar sonhos em espaços reais e funcionais."
+      </p>
+      <p>Sou a Marina Carvalho, arquitecta apaixonada e sócio-gerente da Marina Carvalho – Arquitectura Lda, um gabinete sediado no coração do Montijo.</p>
+      <p>Com uma metodologia própria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente é único, e por isso, o nosso serviço também o é.</p>
+      <p>Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto — é isso que dá sentido ao nosso trabalho.</p>
+    </div>
+    <div class="sobre-visual reveal">
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Personalizado</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Dedicação</div>
+      </div>
+      <div class="stat-card stat-wide">
+        <div class="stat-num">Montijo</div>
+        <div class="stat-label">Grande Lisboa · Portugal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Serviços</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="servicos-grid">
+    <div class="servico-item reveal">
+      <div class="servico-num">01 —</div>
+      <h3 class="servico-title">Projectos de Arquitectura</h3>
+      <p class="servico-desc">Desenvolvemos projectos completos e personalizados, desde a análise inicial até à execução, garantindo excelência em cada etapa do processo.</p>
+      <ul class="servico-sub">
+        <li>Estudo Prévio</li>
+        <li>Informação Prévia</li>
+        <li>Licenciamento</li>
+        <li>Comunicação Prévia</li>
+        <li>Execução e Acompanhamento</li>
+      </ul>
+    </div>
+    <div class="servico-item reveal">
+      <div class="servico-num">02 —</div>
+      <h3 class="servico-title">Consultoria em Arquitectura</h3>
+      <p class="servico-desc">Analisamos as suas necessidades e fornecemos soluções personalizadas que aliam estética, funcionalidade e sustentabilidade. Orientamos em todas as fases do projecto, desde a concepção inicial até à conclusão.</p>
+    </div>
+    <div class="servico-item reveal">
+      <div class="servico-num">03 —</div>
+      <h3 class="servico-title">Fiscalização de Obras</h3>
+      <p class="servico-desc">Monitorizamos todas as fases da construção, assegurando a conformidade com as especificações técnicas e normas legais. Verificamos a qualidade dos materiais e da mão de obra, evitando atrasos e custos adicionais.</p>
+    </div>
+    <div class="servico-item reveal">
+      <div class="servico-num">04 —</div>
+      <h3 class="servico-title">Projectos de Especialidades</h3>
+      <p class="servico-desc">Estruturas, instalações eléctricas, hidráulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global, com soluções eficientes, seguras e de alta qualidade.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Portfolio</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="portfolio-intro reveal">Uma selecção dos nossos projectos mais recentes.</p>
+  <div class="portfolio-grid reveal">
+    <div class="portfolio-item">
+      <div class="portfolio-bg" style="background-color:#2d2822;"></div>
+      <div class="portfolio-placeholder">
+        <span class="portfolio-placeholder-icon">◻</span>
+        <span class="portfolio-placeholder-text">foto do projecto</span>
+      </div>
+      <div class="portfolio-overlay">
+        <span class="portfolio-tag">Em Construção</span>
+        <div class="portfolio-name">Moradia Unifamiliar com Piscina</div>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-bg" style="background-color:#25201c;"></div>
+      <div class="portfolio-placeholder">
+        <span class="portfolio-placeholder-icon">◻</span>
+        <span class="portfolio-placeholder-text">foto do projecto</span>
+      </div>
+      <div class="portfolio-overlay">
+        <span class="portfolio-tag">Visualização 3D</span>
+        <div class="portfolio-name">Interior · Cozinha</div>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-bg" style="background-color:#201c18;"></div>
+      <div class="portfolio-placeholder">
+        <span class="portfolio-placeholder-icon">◻</span>
+        <span class="portfolio-placeholder-text">foto do projecto</span>
+      </div>
+      <div class="portfolio-overlay">
+        <span class="portfolio-tag">Edifício Colectivo</span>
+        <div class="portfolio-name">Saldanha</div>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-bg" style="background-color:#2a2520;"></div>
+      <div class="portfolio-placeholder">
+        <span class="portfolio-placeholder-icon">◻</span>
+        <span class="portfolio-placeholder-text">foto do projecto</span>
+      </div>
+      <div class="portfolio-overlay">
+        <span class="portfolio-tag">Projecto</span>
+        <div class="portfolio-name">Logradouro · Exterior</div>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-bg" style="background-color:#221e1a;"></div>
+      <div class="portfolio-placeholder">
+        <span class="portfolio-placeholder-icon">◻</span>
+        <span class="portfolio-placeholder-text">foto do projecto</span>
+      </div>
+      <div class="portfolio-overlay">
+        <span class="portfolio-tag">Visualização 3D</span>
+        <div class="portfolio-name">Interior · Lavandaria</div>
+      </div>
+    </div>
+  </div>
+  <div class="portfolio-note reveal">
+    <span class="portfolio-note-icon">i</span>
+    <p>As fotografias dos projectos serão adicionadas em breve. Para ver trabalhos recentes, visite o nosso <strong><a href="https://www.instagram.com/marinacarvalho.arquitectura" target="_blank" style="color:inherit; text-decoration:underline;">Instagram</a></strong>.</p>
+  </div>
+</section>
+
+<!-- CONTACTOS -->
+<section id="contactos">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Contacto</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contactos-grid">
+    <div class="reveal">
+      <p class="contactos-intro">
+        Tem um projecto em mente? Estamos prontos para transformar a sua visão em realidade.
+      </p>
+      <div class="contact-list">
+        <div>
+          <div class="contact-entry-label">Email</div>
+          <a href="mailto:geral@marinacarvalhoarquitectura.pt" class="contact-entry-value">geral@marinacarvalhoarquitectura.pt</a>
+        </div>
+        <div>
+          <div class="contact-entry-label">Localização</div>
+          <span class="contact-entry-value">Montijo, Setúbal · Portugal</span>
+        </div>
+        <div>
+          <div class="contact-entry-label">Área de Actuação</div>
+          <span class="contact-entry-value">Grande Lisboa e todo o País</span>
+        </div>
+      </div>
+      <div class="social-row">
+        <a href="https://pt.linkedin.com/in/marina-carvalho-971504220" target="_blank" class="social-pill">LinkedIn</a>
+        <a href="https://www.instagram.com/marinacarvalho.arquitectura" target="_blank" class="social-pill">Instagram</a>
+        <a href="https://linktr.ee/marinacarvalho.arquitectura" target="_blank" class="social-pill">Linktree</a>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO FORMSPREE -->
+    <!-- ⚠️  Substitua YOUR_FORM_ID pelo ID gerado no Formspree -->
+    <div class="reveal">
+      <p class="contact-form-title">Envie-nos uma mensagem</p>
+      <form
+        class="contact-form"
+        id="contactForm"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+      >
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" name="nome" required placeholder="O seu nome">
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="+351 9xx xxx xxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="email@exemplo.com">
+        </div>
+        <div class="form-group">
+          <label for="assunto">Tipo de projecto</label>
+          <select id="assunto" name="assunto">
+            <option value="">— Seleccione —</option>
+            <option value="Projecto de Arquitectura">Projecto de Arquitectura</option>
+            <option value="Consultoria">Consultoria</option>
+            <option value="Fiscalização de Obras">Fiscalização de Obras</option>
+            <option value="Projecto de Especialidades">Projecto de Especialidades</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Mensagem *</label>
+          <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Descreva o seu projecto ou questão..."></textarea>
+        </div>
+        <div class="form-msg success" id="formSuccess">
+          Mensagem enviada com sucesso. Entraremos em contacto brevemente.
+        </div>
+        <div class="form-msg error" id="formError">
+          Ocorreu um erro. Por favor tente novamente ou envie email directamente.
+        </div>
+        <button type="submit" class="btn-primary btn-submit">Enviar mensagem →</button>
+        <p class="form-note">* Campos obrigatórios. Responderemos no prazo de 1–2 dias úteis.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Marina Carvalho Arquitectura</div>
+  <ul class="footer-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contactos">Contacto</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Marina Carvalho – Arquitectura Lda · Todos os direitos reservados</p>
+</footer>
+
+<script>
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  /* ── Hamburger menu ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Scroll reveal ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  /* ── Formulário Formspree (AJAX) ── */
+  const form = document.getElementById('contactForm');
+  const successMsg = document.getElementById('formSuccess');
+  const errorMsg = document.getElementById('formError');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const original = submitBtn.textContent;
+      submitBtn.textContent = 'A enviar...';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.reset();
+          successMsg.style.display = 'block';
+        } else {
+          throw new Error('Erro no envio');
+        }
+      } catch (err) {
+        errorMsg.style.display = 'block';
+      } finally {
+        submitBtn.textContent = original;
+        submitBtn.disabled = false;
+      }
+    });
+  }
+</script>
+</body>
+</html>
