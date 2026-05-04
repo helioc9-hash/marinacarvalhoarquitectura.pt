@@ -5,13 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Marina Carvalho Arquitectura — Gabinete de arquitectura sediado em Montijo.">
 <title>Marina Carvalho Arquitectura</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+<!-- FAVICON inline (símbolo MC) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%231C1A17'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='36' fill='%23C4A882'>MC</text></svg>">
+
+<!-- GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4B2MSXBRK8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-4B2MSXBRK8');
 </script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -19,152 +25,102 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --cream:      #F5F0E8;
-  --cream-dark: #EDE7DB;
+  --cream:        #F5F0E8;
+  --cream-dark:   #EDE7DB;
   --cream-darker: #E4DDD0;
-  --warm-dark:  #1C1A17;
-  --dark2:      #2A2723;
-  --stone:      #8C8072;
-  --accent:     #C4A882;
-  --accent-dim: rgba(196,168,130,0.12);
-  --line:       rgba(140,128,114,0.18);
-  --serif:      'Cormorant Garamond', Georgia, serif;
-  --sans:       'Jost', sans-serif;
+  --warm-dark:    #1C1A17;
+  --dark2:        #2A2723;
+  --stone:        #8C8072;
+  --accent:       #C4A882;
+  --accent-dim:   rgba(196,168,130,0.12);
+  --line:         rgba(140,128,114,0.18);
+  --serif:        'Cormorant Garamond', Georgia, serif;
+  --sans:         'Jost', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
 body { font-family: var(--sans); background: var(--cream); color: var(--warm-dark); overflow-x: hidden; }
 
-/* ═══════════════════════════════════════════════════════════════
-   NAV
-═══════════════════════════════════════════════════════════════ */
+/* ─── SELETOR DE LÍNGUA ─── */
+.lang-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 600;
+  display: flex; justify-content: flex-end; align-items: center;
+  padding: 0.4rem 5rem;
+  background: var(--warm-dark);
+  border-bottom: 1px solid rgba(196,168,130,0.15);
+  gap: 0.5rem;
+}
+.lang-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(245,240,232,0.4); background: none; border: none;
+  cursor: pointer; padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  transition: color 0.2s, background 0.2s;
+  font-family: var(--sans);
+}
+.lang-btn:hover { color: rgba(245,240,232,0.85); }
+.lang-btn.active { color: var(--accent); background: rgba(196,168,130,0.1); }
+.lang-btn .flag { font-size: 0.9rem; line-height: 1; }
+.lang-separator { width: 1px; height: 12px; background: rgba(196,168,130,0.2); }
+
+/* ─── NAV ─── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  position: fixed; top: 30px; left: 0; right: 0; z-index: 500;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1rem 5rem;
+  padding: 0.9rem 5rem;
   background: rgba(245,240,232,0.94);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
   transition: padding 0.35s, box-shadow 0.35s;
 }
-nav.scrolled {
-  padding: 0.65rem 5rem;
-  box-shadow: 0 4px 40px rgba(28,26,23,0.07);
-}
+nav.scrolled { padding: 0.6rem 5rem; box-shadow: 0 4px 40px rgba(28,26,23,0.07); }
 .nav-logo { display: flex; align-items: center; text-decoration: none; }
-.nav-logo img { height: 48px; width: auto; }
+.nav-logo img { height: 46px; width: auto; }
 .nav-logo-text { display: flex; flex-direction: column; margin-left: 2.2rem; }
-.nav-logo-name {
-  font-family: var(--serif); font-size: 1.05rem; font-weight: 300;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-dark); line-height: 1.1;
-}
-.nav-logo-sub {
-  font-size: 0.55rem; letter-spacing: 0.42em; font-family: var(--sans);
-  font-weight: 300; color: var(--accent); text-transform: uppercase; margin-top: 3px;
-}
+.nav-logo-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-dark); line-height: 1.1; }
+.nav-logo-sub { font-size: 0.55rem; letter-spacing: 0.42em; font-family: var(--sans); font-weight: 300; color: var(--accent); text-transform: uppercase; margin-top: 3px; }
 .nav-links { display: flex; gap: 2.8rem; list-style: none; align-items: center; }
-.nav-links a {
-  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--stone); text-decoration: none; transition: color 0.25s;
-  position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -3px; left: 0;
-  width: 0; height: 1px; background: var(--accent); transition: width 0.3s;
-}
+.nav-links a { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.25s; position: relative; }
+.nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width 0.3s; }
 .nav-links a:hover { color: var(--warm-dark); }
 .nav-links a:hover::after { width: 100%; }
-.nav-cta {
-  color: var(--cream) !important; background: var(--warm-dark);
-  padding: 0.65rem 1.6rem !important;
-  transition: background 0.25s !important;
-}
-.nav-cta:hover { background: var(--accent) !important; color: var(--cream) !important; }
+.nav-cta { color: var(--cream) !important; background: var(--warm-dark); padding: 0.65rem 1.6rem !important; transition: background 0.25s !important; }
+.nav-cta:hover { background: var(--accent) !important; }
 .nav-cta::after { display: none !important; }
-
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .hamburger span { display: block; width: 22px; height: 1px; background: var(--warm-dark); transition: transform 0.3s, opacity 0.3s; }
 .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-.mobile-menu {
-  display: none; position: fixed; inset: 0; background: var(--cream); z-index: 490;
-  flex-direction: column; justify-content: center; align-items: center; gap: 2.8rem;
-}
+.mobile-menu { display: none; position: fixed; inset: 0; background: var(--cream); z-index: 490; flex-direction: column; justify-content: center; align-items: center; gap: 2.8rem; }
 .mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-family: var(--serif); font-size: 2.5rem; font-weight: 300; font-style: italic;
-  color: var(--warm-dark); text-decoration: none; transition: color 0.2s;
-}
+.mobile-menu a { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; font-style: italic; color: var(--warm-dark); text-decoration: none; transition: color 0.2s; }
 .mobile-menu a:hover { color: var(--accent); }
 
-/* ═══════════════════════════════════════════════════════════════
-   MODAL IMAGEM
-═══════════════════════════════════════════════════════════════ */
-.modal {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.75);
-  z-index: 1000;
-  align-items: center; justify-content: center;
-  animation: fadeIn 0.3s ease;
-}
+/* ─── MODAL ─── */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.78); z-index: 1000; align-items: center; justify-content: center; animation: fadeIn 0.25s ease; }
 .modal.open { display: flex; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-.modal-content {
-  position: relative;
-  max-width: 90vw; max-height: 90vh;
-  background: var(--warm-dark);
-  overflow: hidden;
-}
-.modal img {
-  width: 100%; height: 100%;
-  object-fit: contain;
-  display: block;
-}
-.modal-close {
-  position: absolute; top: 1rem; right: 1rem;
-  background: var(--accent);
-  border: none;
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; color: var(--warm-dark);
-  transition: background 0.2s;
-  z-index: 2;
-}
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.modal-content { position: relative; max-width: 92vw; max-height: 90vh; background: var(--warm-dark); overflow: hidden; }
+.modal img { width: 100%; height: 100%; max-height: 85vh; object-fit: contain; display: block; }
+.modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--accent); border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--warm-dark); transition: background 0.2s; z-index: 2; }
 .modal-close:hover { background: var(--cream); }
+.modal-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); }
+.modal-tag { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+.modal-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--cream); }
 
-.modal-info {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 2rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-  color: var(--cream);
-}
-.modal-tag {
-  font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 0.5rem;
-}
-.modal-title {
-  font-family: var(--serif); font-size: 1.5rem; font-weight: 300;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   HERO — centrado, sem imagem
-═══════════════════════════════════════════════════════════════ */
+/* ─── HERO ─── */
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   text-align: center;
-  padding: 10rem 4rem 6rem;
   position: relative; overflow: hidden;
+  padding-top: 30px; /* compensar lang-bar */
 }
-
 .hero::before {
-  content: '';
+  content:'';
   position: absolute; inset: 0;
   background-image:
     linear-gradient(rgba(196,168,130,0.06) 1px, transparent 1px),
@@ -173,170 +129,136 @@ nav.scrolled {
   pointer-events: none;
 }
 .hero::after {
-  content: '';
+  content:'';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, transparent 25%, rgba(245,240,232,0.85) 70%);
+  background: radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(245,240,232,0.88) 68%);
   pointer-events: none;
 }
-
-.hero-rings {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none; z-index: 1;
-}
-.hero-ring {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px solid var(--line);
-}
-.hero-ring:nth-child(1) { width: 600px; height: 600px; }
-.hero-ring:nth-child(2) { width: 420px; height: 420px; border-color: rgba(196,168,130,0.12); }
+.hero-rings { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; z-index: 1; }
+.hero-ring { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); border-radius: 50%; border: 1px solid var(--line); }
+.hero-ring:nth-child(1) { width: 620px; height: 620px; }
+.hero-ring:nth-child(2) { width: 430px; height: 430px; border-color: rgba(196,168,130,0.11); }
 .hero-ring:nth-child(3) { width: 240px; height: 240px; border-color: rgba(196,168,130,0.08); }
 
 .hero-inner {
   position: relative; z-index: 2;
-  max-width: 820px;
+  max-width: 860px; padding: 0 2rem;
+  margin-top: 4rem; /* empurra o bloco para baixo do nav */
 }
-
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 1rem;
-  margin-bottom: 2.5rem; justify-content: center;
+  margin-bottom: 3rem; justify-content: center;
 }
 .hero-eyebrow-line { width: 2.5rem; height: 1px; background: var(--accent); flex-shrink: 0; }
-.hero-eyebrow-text {
-  font-size: 0.62rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--stone);
-}
+.hero-eyebrow-text { font-size: 0.62rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--stone); }
 
+/* TÍTULO — 3 tamanhos proporcionais e espaçamento equilibrado */
 .hero-title {
   font-family: var(--serif);
-  font-size: clamp(3.5rem, 8vw, 7rem);
-  font-weight: 300; line-height: 1.0;
+  font-weight: 300;
   color: var(--warm-dark);
-  margin-bottom: 2rem;
   letter-spacing: -0.01em;
+  margin-bottom: 0;
 }
-.hero-title em {
-  font-style: italic; color: var(--accent);
+.hero-title .t1 {
   display: block;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 1.0;
+  margin-bottom: 0.12em;
+}
+.hero-title .t2 {
+  display: block;
+  font-size: clamp(2.4rem, 5.2vw, 4.6rem);
+  font-style: italic; color: var(--accent);
+  line-height: 1.15;
+  margin-bottom: 0.12em;
+}
+.hero-title .t3 {
+  display: block;
+  font-size: clamp(2.8rem, 6.2vw, 5.5rem);
+  line-height: 1.05;
 }
 
 .hero-ornament {
   display: flex; align-items: center; justify-content: center;
-  gap: 1.5rem; margin: 2rem 0;
+  gap: 1.5rem; margin: 2.2rem 0;
 }
 .hero-ornament-line { flex: 1; max-width: 80px; height: 1px; background: var(--line); }
-.hero-ornament-diamond {
-  width: 5px; height: 5px; background: var(--accent);
-  transform: rotate(45deg); flex-shrink: 0;
-}
+.hero-ornament-diamond { width: 5px; height: 5px; background: var(--accent); transform: rotate(45deg); flex-shrink: 0; }
 
 .hero-desc {
-  font-size: 0.95rem; line-height: 2; color: var(--stone);
+  font-size: 0.94rem; line-height: 2; color: var(--stone);
   max-width: 500px; margin: 0 auto 3rem; font-weight: 300;
 }
-.hero-actions {
-  display: flex; gap: 1rem; align-items: center;
-  justify-content: center; flex-wrap: wrap;
-}
-
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 0.7rem;
-  font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--cream); background: var(--warm-dark);
-  border: 1px solid var(--warm-dark); padding: 1.1rem 2.2rem;
-  text-decoration: none; transition: background 0.25s, border-color 0.25s;
-  cursor: pointer;
-}
+.hero-actions { display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.7rem; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); background: var(--warm-dark); border: 1px solid var(--warm-dark); padding: 1.1rem 2.2rem; text-decoration: none; transition: background 0.25s, border-color 0.25s; cursor: pointer; }
 .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
-
-.btn-ghost {
-  display: inline-flex; align-items: center; gap: 0.7rem;
-  font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--warm-dark); background: transparent;
-  border: 1px solid rgba(140,128,114,0.3); padding: 1.1rem 2rem;
-  text-decoration: none; transition: border-color 0.25s, color 0.25s;
-  cursor: pointer;
-}
+.btn-ghost { display: inline-flex; align-items: center; gap: 0.7rem; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-dark); background: transparent; border: 1px solid rgba(140,128,114,0.3); padding: 1.1rem 2rem; text-decoration: none; transition: border-color 0.25s, color 0.25s; cursor: pointer; }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+.hero-scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, transparent, var(--accent)); animation: scrollPulse 2.2s ease-in-out infinite; }
+@keyframes scrollPulse { 0%,100% { opacity:0.3; transform:scaleY(0.4); transform-origin:top; } 50% { opacity:1; transform:scaleY(1); } }
+.hero-scroll-text { font-size: 0.52rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--stone); }
 
-.hero-scroll {
-  position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
-  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
-}
-.hero-scroll-line {
-  width: 1px; height: 55px;
-  background: linear-gradient(to bottom, transparent, var(--accent));
-  animation: scrollPulse 2.2s ease-in-out infinite;
-}
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(0.4); transform-origin: top; }
-  50% { opacity: 1; transform: scaleY(1); }
-}
-.hero-scroll-text {
-  font-size: 0.52rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--stone);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   SECÇÕES
-═══════════════════════════════════════════════════════════════ */
+/* ─── SECÇÕES ─── */
 section { padding: 8rem 5rem; position: relative; }
-
 .section-header { margin-bottom: 5rem; }
-.section-eyebrow {
-  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;
-}
+.section-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
 .section-eyebrow-line { width: 28px; height: 1px; background: var(--accent); flex-shrink: 0; }
 .section-eyebrow-text { font-size: 0.58rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--stone); }
-.section-title {
-  font-family: var(--serif); font-size: clamp(2rem, 3.8vw, 3rem);
-  font-weight: 300; line-height: 1.1; color: var(--warm-dark);
-}
+.section-title { font-family: var(--serif); font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 300; line-height: 1.1; color: var(--warm-dark); }
 .section-title em { font-style: italic; color: var(--accent); }
 .light .section-eyebrow-line { background: rgba(196,168,130,0.5); }
 .light .section-eyebrow-text { color: rgba(245,240,232,0.4); }
 .light .section-title { color: var(--cream); }
 
-/* ═══════════════════════════════════════════════════════════════
-   SOBRE
-═══════════════════════════════════════════════════════════════ */
+/* ─── SOBRE ─── */
 #sobre { background: var(--warm-dark); color: var(--cream); }
-#sobre::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, rgba(196,168,130,0.4), transparent);
+#sobre::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(to right, transparent, rgba(196,168,130,0.4), transparent); }
+
+.sobre-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 7rem; align-items: start; }
+
+.sobre-text p { font-size: 0.93rem; line-height: 2.1; font-weight: 300; color: rgba(245,240,232,0.62); margin-bottom: 1.4rem; }
+.sobre-quote { font-family: var(--serif) !important; font-size: 1.4rem !important; font-style: italic; color: var(--accent) !important; line-height: 1.65 !important; margin-bottom: 2.5rem !important; padding-left: 1.5rem; border-left: 2px solid var(--accent); }
+
+/* Foto da arquitecta */
+.sobre-foto {
+  width: 100%; aspect-ratio: 4/5;
+  border: 1px solid rgba(196,168,130,0.18);
+  overflow: hidden; position: relative;
+  background: rgba(255,255,255,0.03);
+  margin-bottom: 1.5rem;
+}
+.sobre-foto img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  display: block;
+}
+.sobre-foto-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem;
+}
+.sobre-foto-placeholder-icon {
+  font-size: 3rem; opacity: 0.15;
+}
+.sobre-foto-placeholder-text {
+  font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(196,168,130,0.35);
 }
 
-.sobre-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 7rem; align-items: center; }
-.sobre-text p { font-size: 0.93rem; line-height: 2.1; font-weight: 300; color: rgba(245,240,232,0.62); margin-bottom: 1.4rem; }
-.sobre-quote {
-  font-family: var(--serif) !important; font-size: 1.4rem !important; font-style: italic;
-  color: var(--accent) !important; line-height: 1.65 !important;
-  margin-bottom: 2.5rem !important; padding-left: 1.5rem; border-left: 2px solid var(--accent);
-}
-.sobre-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(196,168,130,0.12); }
-.sobre-card {
-  background: var(--warm-dark); padding: 2.8rem 2.2rem;
-  border: 1px solid rgba(196,168,130,0.1); transition: border-color 0.3s;
-}
+.sobre-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(196,168,130,0.12); margin-top: 1rem; }
+.sobre-card { background: var(--warm-dark); padding: 2.2rem 2rem; border: 1px solid rgba(196,168,130,0.1); transition: border-color 0.3s; }
 .sobre-card:hover { border-color: rgba(196,168,130,0.3); }
 .sobre-card:last-child { grid-column: 1/-1; }
-.sobre-card-num { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
+.sobre-card-num { font-family: var(--serif); font-size: 2.6rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
 .sobre-card-label { font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(245,240,232,0.28); }
-.sobre-card:last-child .sobre-card-num { font-size: 1.8rem; font-style: italic; }
+.sobre-card:last-child .sobre-card-num { font-size: 1.6rem; font-style: italic; }
 
-/* ═══════════════════════════════════════════════════════════════
-   SERVIÇOS
-═══════════════════════════════════════════════════════════════ */
+/* ─── SERVIÇOS ─── */
 #servicos { background: var(--cream); }
 .servicos-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); }
-.servico-item {
-  padding: 4rem; border: 1px solid var(--line); margin: -1px 0 0 -1px;
-  position: relative; overflow: hidden; transition: background 0.3s;
-}
-.servico-item::after {
-  content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 2px; background: var(--accent); transition: width 0.4s;
-}
+.servico-item { padding: 4rem; border: 1px solid var(--line); margin: -1px 0 0 -1px; position: relative; overflow: hidden; transition: background 0.3s; }
+.servico-item::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--accent); transition:width 0.4s; }
 .servico-item:hover { background: var(--accent-dim); }
 .servico-item:hover::after { width: 100%; }
 .servico-num { font-family: var(--serif); font-size: 0.82rem; font-style: italic; color: var(--accent); margin-bottom: 1.5rem; }
@@ -345,124 +267,54 @@ section { padding: 8rem 5rem; position: relative; }
 .servico-sub { list-style: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
 .servico-sub li { font-size: 0.78rem; color: var(--stone); padding: 0.42rem 0; display: flex; align-items: center; gap: 0.65rem; border-bottom: 1px solid rgba(140,128,114,0.08); font-weight: 300; }
 .servico-sub li:last-child { border-bottom: none; }
-.servico-sub li::before { content: '→'; color: var(--accent); font-size: 0.68rem; flex-shrink: 0; }
+.servico-sub li::before { content:'→'; color:var(--accent); font-size:0.68rem; flex-shrink:0; }
 
-/* ═══════════════════════════════════════════════════════════════
-   PORTFOLIO — cada projecto é uma secção, com modal de imagens
-═══════════════════════════════════════════════════════════════ */
+/* ─── PORTFOLIO ─── */
 #portfolio { background: var(--cream-dark); }
-#portfolio::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, var(--accent), transparent); opacity: 0.3;
-}
-
-.portfolio-intro {
-  font-family: var(--serif); font-size: 1.1rem; font-style: italic;
-  color: var(--stone); margin-top: -3rem; margin-bottom: 5rem;
-}
-
+#portfolio::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(to right, transparent, var(--accent), transparent); opacity:0.3; }
+.portfolio-intro { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: var(--stone); margin-top: -3rem; margin-bottom: 5rem; }
 .portfolio-projeto { margin-bottom: 5rem; }
 .portfolio-projeto:last-child { margin-bottom: 0; }
-
-.portfolio-projeto-header {
-  display: flex; align-items: baseline; gap: 2rem;
-  margin-bottom: 1.5rem; padding-bottom: 1rem;
-  border-bottom: 1px solid var(--line);
-}
-.portfolio-projeto-num {
-  font-family: var(--serif); font-size: 0.8rem; font-style: italic; color: var(--accent);
-  flex-shrink: 0;
-}
-.portfolio-projeto-title {
-  font-family: var(--serif); font-size: 1.5rem; font-weight: 300; color: var(--warm-dark);
-}
-.portfolio-projeto-tag {
-  font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--stone); margin-left: auto; flex-shrink: 0;
-}
-
-/* Grelha de imagens com interatividade */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: 1.55fr 1fr;
-  gap: 5px;
-}
-.portfolio-col-right {
-  display: grid; grid-template-rows: 1fr 1fr 1fr; gap: 5px;
-}
-
-.portfolio-item {
-  position: relative; overflow: hidden;
-  background: var(--dark2); cursor: pointer;
-  min-height: 220px;
-  transition: transform 0.3s;
-}
+.portfolio-projeto-header { display: flex; align-items: baseline; gap: 2rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.portfolio-projeto-num { font-family: var(--serif); font-size: 0.8rem; font-style: italic; color: var(--accent); flex-shrink: 0; }
+.portfolio-projeto-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; color: var(--warm-dark); }
+.portfolio-projeto-tag { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--stone); margin-left: auto; flex-shrink: 0; }
+.portfolio-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 5px; }
+.portfolio-col-right { display: grid; grid-template-rows: 1fr 1fr 1fr; gap: 5px; }
+.portfolio-item { position: relative; overflow: hidden; background: var(--dark2); cursor: pointer; min-height: 220px; transition: transform 0.3s; }
 .portfolio-item-main { min-height: 540px; }
 .portfolio-item:hover { transform: scale(1.01); }
-
-.portfolio-item img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.3s;
-  opacity: 0.9;
-}
+.portfolio-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.3s; opacity: 0.9; }
 .portfolio-item:hover img { transform: scale(1.04); opacity: 1; }
-
-.portfolio-overlay {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 2rem 1.8rem 1.8rem;
-  background: linear-gradient(to top, rgba(20,18,14,0.88) 0%, rgba(20,18,14,0.35) 55%, transparent);
-  transform: translateY(45%);
-  transition: transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
-}
+.portfolio-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.8rem 1.8rem; background: linear-gradient(to top, rgba(20,18,14,0.88) 0%, rgba(20,18,14,0.35) 55%, transparent); transform: translateY(45%); transition: transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94); }
 .portfolio-item:hover .portfolio-overlay { transform: translateY(0); }
-.portfolio-item-tag {
-  display: inline-block; font-size: 0.55rem; letter-spacing: 0.28em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem;
-}
-.portfolio-item-name {
-  font-family: var(--serif); font-size: 1.1rem; font-weight: 300;
-  color: rgba(245,240,232,0.92); line-height: 1.3;
-}
-
-.portfolio-separator {
-  display: flex; align-items: center; gap: 1.5rem;
-  margin: 4rem 0;
-}
+.portfolio-item-tag { display: inline-block; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.45rem; }
+.portfolio-item-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 300; color: rgba(245,240,232,0.92); line-height: 1.3; }
+.portfolio-separator { display: flex; align-items: center; gap: 1.5rem; margin: 4rem 0; }
 .portfolio-separator-line { flex: 1; height: 1px; background: var(--line); }
-.portfolio-separator-diamond {
-  width: 5px; height: 5px; background: var(--accent);
-  transform: rotate(45deg); flex-shrink: 0;
-}
-
-.portfolio-note {
-  margin-top: 3rem; padding: 1.4rem 1.8rem;
-  border: 1px solid var(--line); background: var(--cream);
-  display: flex; align-items: center; gap: 1.2rem;
-}
+.portfolio-separator-diamond { width: 5px; height: 5px; background: var(--accent); transform: rotate(45deg); flex-shrink: 0; }
+.portfolio-note { margin-top: 3rem; padding: 1.4rem 1.8rem; border: 1px solid var(--line); background: var(--cream); display: flex; align-items: center; gap: 1.2rem; }
 .portfolio-note-icon { font-family: var(--serif); font-size: 1.6rem; color: var(--accent); font-style: italic; flex-shrink: 0; }
 .portfolio-note p { font-size: 0.79rem; color: var(--stone); line-height: 1.7; font-weight: 300; }
 .portfolio-note strong { color: var(--warm-dark); font-weight: 500; }
 
-/* ═══════════════════════════════════════════════════════════════
-   CONTACTOS
-═══════════════════════════════════════════════════════════════ */
+/* ─── CONTACTOS ─── */
 #contactos { background: var(--warm-dark); color: var(--cream); }
-#contactos::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, rgba(196,168,130,0.4), transparent);
-}
+#contactos::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(to right, transparent, rgba(196,168,130,0.4), transparent); }
 .contactos-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 7rem; align-items: start; }
-.contactos-intro {
-  font-family: var(--serif); font-size: 1.25rem; font-style: italic;
-  color: rgba(245,240,232,0.6); line-height: 1.8; margin-bottom: 3rem;
-}
-.contact-list { display: flex; flex-direction: column; gap: 2rem; }
+.contactos-intro { font-family: var(--serif); font-size: 1.25rem; font-style: italic; color: rgba(245,240,232,0.6); line-height: 1.8; margin-bottom: 3rem; }
+.contact-list { display: flex; flex-direction: column; gap: 1.8rem; }
 .contact-entry-label { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
 .contact-entry-value { font-size: 0.92rem; color: rgba(245,240,232,0.7); font-weight: 300; text-decoration: none; transition: color 0.2s; }
 a.contact-entry-value:hover { color: var(--accent); }
-.social-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(196,168,130,0.12); }
+.contact-map { margin-top: 2.5rem; border: 1px solid rgba(196,168,130,0.18); overflow: hidden; line-height: 0; }
+.contact-map iframe { width: 100%; height: 220px; border: none; filter: grayscale(1) sepia(0.15) brightness(0.8); transition: filter 0.3s; }
+.contact-map iframe:hover { filter: grayscale(0.2) sepia(0.08) brightness(0.95); }
+.contact-map-label { padding: 0.85rem 1rem; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(196,168,130,0.12); display: flex; align-items: center; justify-content: space-between; }
+.contact-map-label span { font-size: 0.68rem; color: rgba(245,240,232,0.45); font-weight: 300; }
+.contact-map-label a { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+.contact-map-label a:hover { opacity: 0.7; }
+.social-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(196,168,130,0.12); }
 .social-pill { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,240,232,0.35); text-decoration: none; padding: 0.65rem 1.3rem; border: 1px solid rgba(196,168,130,0.18); transition: border-color 0.3s, color 0.3s; }
 .social-pill:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -470,12 +322,7 @@ a.contact-entry-value:hover { color: var(--accent); }
 .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
 .form-group label { font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(196,168,130,0.7); }
-.form-group input, .form-group textarea, .form-group select {
-  background: rgba(245,240,232,0.04); border: 1px solid rgba(196,168,130,0.2);
-  color: var(--cream); padding: 0.95rem 1rem; font-family: var(--sans); font-size: 0.88rem;
-  font-weight: 300; outline: none; resize: none; transition: border-color 0.3s;
-  width: 100%; -webkit-appearance: none;
-}
+.form-group input, .form-group textarea, .form-group select { background: rgba(245,240,232,0.04); border: 1px solid rgba(196,168,130,0.2); color: var(--cream); padding: 0.95rem 1rem; font-family: var(--sans); font-size: 0.88rem; font-weight: 300; outline: none; resize: none; transition: border-color 0.3s; width: 100%; -webkit-appearance: none; }
 .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
 .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(245,240,232,0.2); }
 .form-group select option { background: var(--dark2); color: var(--cream); }
@@ -485,36 +332,28 @@ a.contact-entry-value:hover { color: var(--accent); }
 .form-msg.success { border-color: rgba(196,168,130,0.4); color: var(--accent); background: rgba(196,168,130,0.07); }
 .form-msg.error { border-color: rgba(200,80,60,0.3); color: #e88; background: rgba(200,80,60,0.05); }
 
-/* ═══════════════════════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════════════════════ */
-footer {
-  background: #100E0C; padding: 2.5rem 5rem;
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(196,168,130,0.1);
-}
+/* ─── FOOTER ─── */
+footer { background: #100E0C; padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(196,168,130,0.1); }
 .footer-brand { font-family: var(--serif); font-size: 0.9rem; color: rgba(245,240,232,0.25); }
 .footer-links { display: flex; gap: 2.2rem; list-style: none; }
 .footer-links a { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,240,232,0.18); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--accent); }
 .footer-copy { font-size: 0.6rem; color: rgba(245,240,232,0.12); width: 100%; text-align: center; padding-top: 1.2rem; border-top: 1px solid rgba(196,168,130,0.06); margin-top: 0.5rem; }
 
-/* ═══════════════════════════════════════════════════════════════
-   REVEAL
-═══════════════════════════════════════════════════════════════ */
+/* ─── REVEAL ─── */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s ease, transform 0.85s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ═══════════════════════════════════════════════════════════════
-   MOBILE
-═══════════════════════════════════════════════════════════════ */
+/* ─── MOBILE ─── */
 @media (max-width: 1024px) {
-  nav { padding: 1rem 1.5rem; }
-  nav.scrolled { padding: 0.7rem 1.5rem; }
+  .lang-bar { padding: 0.4rem 1.5rem; }
+  nav { padding: 0.9rem 1.5rem; top: 30px; }
+  nav.scrolled { padding: 0.65rem 1.5rem; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
   section { padding: 5.5rem 1.5rem; }
-  .hero { padding: 9rem 1.5rem 6rem; }
+  .hero { padding-top: 30px; }
+  .hero-inner { margin-top: 3rem; }
   .hero-ring:nth-child(1) { width: 380px; height: 380px; }
   .hero-ring:nth-child(2) { width: 260px; height: 260px; }
   .hero-ring:nth-child(3) { width: 140px; height: 140px; }
@@ -533,15 +372,20 @@ footer {
 }
 @media (max-width: 560px) {
   .sobre-cards { grid-template-columns: 1fr; }
-  .hero-title { font-size: clamp(2.8rem, 12vw, 4rem); }
   .portfolio-projeto-header { flex-wrap: wrap; gap: 0.5rem; }
   .portfolio-projeto-tag { margin-left: 0; }
 }
+
+/* ─── TRADUÇÕES — elementos ocultados por língua ─── */
+[data-lang] { display: none; }
+[data-lang].active { display: block; }
+.inline-lang { display: none; }
+.inline-lang.active { display: inline; }
 </style>
 </head>
 <body>
 
-<!-- MODAL PARA IMAGENS -->
+<!-- MODAL -->
 <div class="modal" id="imageModal">
   <div class="modal-content">
     <button class="modal-close" onclick="closeModal()">&times;</button>
@@ -553,12 +397,27 @@ footer {
   </div>
 </div>
 
+<!-- BARRA DE LÍNGUA -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('pt')" title="Português">
+    <span class="flag">🇵🇹</span> PT
+  </button>
+  <span class="lang-separator"></span>
+  <button class="lang-btn" onclick="setLang('en')" title="English">
+    <span class="flag">🇬🇧</span> EN
+  </button>
+  <span class="lang-separator"></span>
+  <button class="lang-btn" onclick="setLang('es')" title="Español">
+    <span class="flag">🇪🇸</span> ES
+  </button>
+</div>
+
 <!-- MENU MOBILE -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#sobre" onclick="closeMobile()">Sobre</a>
-  <a href="#servicos" onclick="closeMobile()">Serviços</a>
+  <a href="#sobre" onclick="closeMobile()" data-nav-sobre>Sobre</a>
+  <a href="#servicos" onclick="closeMobile()" data-nav-servicos>Serviços</a>
   <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-  <a href="#contactos" onclick="closeMobile()">Contacto</a>
+  <a href="#contactos" onclick="closeMobile()" data-nav-contacto>Contacto</a>
 </div>
 
 <!-- NAV -->
@@ -571,10 +430,10 @@ footer {
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#sobre" data-nav-sobre>Sobre</a></li>
+    <li><a href="#servicos" data-nav-servicos>Serviços</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#contactos" class="nav-cta">Contacto</a></li>
+    <li><a href="#contactos" class="nav-cta" data-nav-contacto>Contacto</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -591,25 +450,25 @@ footer {
   <div class="hero-inner">
     <div class="hero-eyebrow">
       <span class="hero-eyebrow-line"></span>
-      <span class="hero-eyebrow-text">Gabinete de Arquitectura · Montijo</span>
+      <span class="hero-eyebrow-text" data-nav-gabinete>Gabinete de Arquitectura · Montijo</span>
       <span class="hero-eyebrow-line"></span>
     </div>
     <h1 class="hero-title">
-      Arquitectura<br>
-      <em>que transforma</em><br>
-      sonhos em espaço.
+      <span class="t1" data-hero-t1>Arquitectura</span>
+      <span class="t2" data-hero-t2>que transforma</span>
+      <span class="t3" data-hero-t3>sonhos em espaço.</span>
     </h1>
     <div class="hero-ornament">
       <span class="hero-ornament-line"></span>
       <span class="hero-ornament-diamond"></span>
       <span class="hero-ornament-line"></span>
     </div>
-    <p class="hero-desc">
+    <p class="hero-desc" data-hero-desc>
       Cada projecto é único. Desenvolvemos soluções personalizadas com rigor, criatividade e atenção ao detalhe — do estudo prévio à conclusão da obra.
     </p>
     <div class="hero-actions">
-      <a href="#contactos" class="btn-primary">Iniciar projecto →</a>
-      <a href="#portfolio" class="btn-ghost">Ver portfolio</a>
+      <a href="#contactos" class="btn-primary" data-btn-iniciar>Iniciar projecto →</a>
+      <a href="#portfolio" class="btn-ghost" data-btn-portfolio>Ver portfolio</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -623,21 +482,36 @@ footer {
   <div class="section-header light reveal">
     <div class="section-eyebrow">
       <span class="section-eyebrow-line"></span>
-      <span class="section-eyebrow-text">01 — Sobre nós</span>
+      <span class="section-eyebrow-text" data-sec-sobre-label>01 — Sobre nós</span>
     </div>
-    <h2 class="section-title">Uma visão <em>diferente</em><br>da arquitectura.</h2>
+    <h2 class="section-title" data-sec-sobre-title>Uma visão <em>diferente</em><br>da arquitectura.</h2>
   </div>
   <div class="sobre-grid">
     <div class="sobre-text reveal">
-      <p class="sobre-quote">"Arquitectura como forma de transformar sonhos em espaços reais e funcionais."</p>
-      <p>Sou a Marina Carvalho, arquitecta e sócio-gerente da Marina Carvalho – Arquitectura Lda, um gabinete sediado no coração do Montijo.</p>
-      <p>Com uma metodologia própria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente é único, e por isso, o nosso serviço também o é.</p>
-      <p>Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto — é isso que dá sentido ao nosso trabalho.</p>
+      <p class="sobre-quote" data-sobre-quote>"Arquitectura como forma de transformar sonhos em espaços reais e funcionais."</p>
+      <p data-sobre-p1>Sou a Marina Carvalho, arquitecta e sócio-gerente da Marina Carvalho – Arquitectura Lda, um gabinete sediado no coração do Montijo.</p>
+      <p data-sobre-p2>Com uma metodologia própria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente é único, e por isso, o nosso serviço também o é.</p>
+      <p data-sobre-p3>Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto — é isso que dá sentido ao nosso trabalho.</p>
     </div>
-    <div class="sobre-cards reveal">
-      <div class="sobre-card"><div class="sobre-card-num">100%</div><div class="sobre-card-label">Personalizado</div></div>
-      <div class="sobre-card"><div class="sobre-card-num">∞</div><div class="sobre-card-label">Dedicação</div></div>
-      <div class="sobre-card"><div class="sobre-card-num">Montijo</div><div class="sobre-card-label">Grande Lisboa · Portugal</div></div>
+    <div class="reveal">
+      <!-- FOTOGRAFIA DA ARQUITECTA
+           Para adicionar a foto: faça upload de uma imagem chamada "foto-marina.jpg"
+           para a raiz do repositório no GitHub, ao lado do index.html.
+           A foto ideal tem orientação vertical (retrato). -->
+      <div class="sobre-foto">
+        <div class="sobre-foto-placeholder">
+          <span class="sobre-foto-placeholder-icon">👤</span>
+          <span class="sobre-foto-placeholder-text" data-foto-label>Fotografia · Em breve</span>
+        </div>
+        <!-- Descomente a linha abaixo quando tiver a foto:
+        <img src="foto-marina.jpg" alt="Marina Carvalho, Arquitecta">
+        -->
+      </div>
+      <div class="sobre-cards">
+        <div class="sobre-card"><div class="sobre-card-num">100%</div><div class="sobre-card-label" data-card-personalizado>Personalizado</div></div>
+        <div class="sobre-card"><div class="sobre-card-num">∞</div><div class="sobre-card-label" data-card-dedicacao>Dedicação</div></div>
+        <div class="sobre-card"><div class="sobre-card-num">Montijo</div><div class="sobre-card-label" data-card-local>Grande Lisboa · Portugal</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -647,34 +521,35 @@ footer {
   <div class="section-header reveal">
     <div class="section-eyebrow">
       <span class="section-eyebrow-line"></span>
-      <span class="section-eyebrow-text">02 — Serviços</span>
+      <span class="section-eyebrow-text" data-sec-servicos-label>02 — Serviços</span>
     </div>
-    <h2 class="section-title">O que <em>fazemos</em><br>por si.</h2>
+    <h2 class="section-title" data-sec-servicos-title>O que <em>fazemos</em><br>por si.</h2>
   </div>
   <div class="servicos-grid">
     <div class="servico-item reveal">
       <div class="servico-num">01 —</div>
-      <h3 class="servico-title">Projectos de Arquitectura</h3>
-      <p class="servico-desc">Desenvolvemos projectos completos e personalizados, desde a análise inicial até à execução, garantindo excelência em cada etapa do processo.</p>
+      <h3 class="servico-title" data-s1-title>Projectos de Arquitectura</h3>
+      <p class="servico-desc" data-s1-desc>Desenvolvemos projectos completos e personalizados, desde a análise inicial até à execução, garantindo excelência em cada etapa do processo.</p>
       <ul class="servico-sub">
-        <li>Estudo Prévio</li><li>Informação Prévia</li><li>Licenciamento</li>
-        <li>Comunicação Prévia</li><li>Execução e Acompanhamento</li>
+        <li data-s1-li1>Estudo Prévio</li><li data-s1-li2>Informação Prévia</li>
+        <li data-s1-li3>Licenciamento</li><li data-s1-li4>Comunicação Prévia</li>
+        <li data-s1-li5>Execução e Acompanhamento</li>
       </ul>
     </div>
     <div class="servico-item reveal">
       <div class="servico-num">02 —</div>
-      <h3 class="servico-title">Consultoria em Arquitectura</h3>
-      <p class="servico-desc">Analisamos as suas necessidades e fornecemos soluções personalizadas que aliam estética, funcionalidade e sustentabilidade. Orientamos em todas as fases do projecto, desde a concepção inicial até à conclusão.</p>
+      <h3 class="servico-title" data-s2-title>Consultoria em Arquitectura</h3>
+      <p class="servico-desc" data-s2-desc>Analisamos as suas necessidades e fornecemos soluções personalizadas que aliam estética, funcionalidade e sustentabilidade. Orientamos em todas as fases do projecto, desde a concepção inicial até à conclusão.</p>
     </div>
     <div class="servico-item reveal">
       <div class="servico-num">03 —</div>
-      <h3 class="servico-title">Fiscalização de Obras</h3>
-      <p class="servico-desc">Monitorizamos todas as fases da construção, assegurando a conformidade com as especificações técnicas e normas legais. Verificamos a qualidade dos materiais e da mão de obra, evitando atrasos e custos desnecessários.</p>
+      <h3 class="servico-title" data-s3-title>Fiscalização de Obras</h3>
+      <p class="servico-desc" data-s3-desc>Monitorizamos todas as fases da construção, assegurando a conformidade com as especificações técnicas e normas legais. Verificamos a qualidade dos materiais e da mão de obra, evitando atrasos e custos desnecessários.</p>
     </div>
     <div class="servico-item reveal">
       <div class="servico-num">04 —</div>
-      <h3 class="servico-title">Projectos de Especialidades</h3>
-      <p class="servico-desc">Estruturas, instalações eléctricas, hidráulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global, com soluções eficientes, seguras e de alta qualidade.</p>
+      <h3 class="servico-title" data-s4-title>Projectos de Especialidades</h3>
+      <p class="servico-desc" data-s4-desc>Estruturas, instalações eléctricas, hidráulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global, com soluções eficientes, seguras e de alta qualidade.</p>
     </div>
   </div>
 </section>
@@ -684,62 +559,66 @@ footer {
   <div class="section-header reveal">
     <div class="section-eyebrow">
       <span class="section-eyebrow-line"></span>
-      <span class="section-eyebrow-text">03 — Portfolio</span>
+      <span class="section-eyebrow-text" data-sec-portfolio-label>03 — Portfolio</span>
     </div>
-    <h2 class="section-title">Os nossos <em>projectos</em>.</h2>
+    <h2 class="section-title" data-sec-portfolio-title>Os nossos <em>projectos</em>.</h2>
   </div>
-  <p class="portfolio-intro reveal">Cada obra conta uma história. Clique nas imagens para ver em detalhe.</p>
+  <p class="portfolio-intro reveal" data-portfolio-intro>Cada obra conta uma história. Clique nas imagens para ver em detalhe.</p>
 
   <!-- CASA 1 -->
   <div class="portfolio-projeto reveal">
     <div class="portfolio-projeto-header">
       <span class="portfolio-projeto-num">01 —</span>
-      <h3 class="portfolio-projeto-title">Moradia Unifamiliar com Piscina</h3>
-      <span class="portfolio-projeto-tag">Projecto de Arquitectura · Montijo</span>
+      <h3 class="portfolio-projeto-title" data-p1-title>Moradia Unifamiliar com Piscina</h3>
+      <span class="portfolio-projeto-tag" data-p1-tag>Projecto de Arquitectura · Montijo</span>
     </div>
     <div class="portfolio-grid">
-      <div class="portfolio-item portfolio-item-main" onclick="openModal('images/casa1/alcado-principal.png', 'Alçado', 'Vista Principal')">
+      <div class="portfolio-item portfolio-item-main" onclick="openModal('images/casa1/alcado-principal.png','Alçado','Vista Principal')">
         <img src="images/casa1/alcado-principal.png" alt="Alçado Principal">
         <div class="portfolio-overlay">
-          <span class="portfolio-item-tag">Alçado</span>
-          <div class="portfolio-item-name">Vista Principal</div>
+          <span class="portfolio-item-tag" data-imo-alcado>Alçado</span>
+          <div class="portfolio-item-name" data-imo-vista>Vista Principal</div>
         </div>
       </div>
       <div class="portfolio-col-right">
-        <div class="portfolio-item" onclick="openModal('images/casa1/logradouro.png', 'Exterior', 'Logradouro')">
+        <div class="portfolio-item" onclick="openModal('images/casa1/logradouro.png','Exterior','Logradouro')">
           <img src="images/casa1/logradouro.png" alt="Logradouro">
           <div class="portfolio-overlay">
             <span class="portfolio-item-tag">Exterior</span>
-            <div class="portfolio-item-name">Logradouro</div>
+            <div class="portfolio-item-name" data-imo-logradouro>Logradouro</div>
           </div>
         </div>
-        <div class="portfolio-item" onclick="openModal('images/casa1/logradouro1.png', 'Exterior', 'Logradouro — Vista 2')">
+        <div class="portfolio-item" onclick="openModal('images/casa1/logradouro1.png','Exterior','Logradouro — Vista 2')">
           <img src="images/casa1/logradouro1.png" alt="Logradouro — Vista 2">
           <div class="portfolio-overlay">
             <span class="portfolio-item-tag">Exterior</span>
-            <div class="portfolio-item-name">Logradouro — Vista 2</div>
+            <div class="portfolio-item-name" data-imo-logradouro2>Logradouro — Vista 2</div>
           </div>
         </div>
-        <div class="portfolio-item" onclick="openModal('images/casa1/piscina.png', 'Exterior', 'Piscina')">
+        <div class="portfolio-item" onclick="openModal('images/casa1/piscina.png','Exterior','Piscina')">
           <img src="images/casa1/piscina.png" alt="Piscina">
           <div class="portfolio-overlay">
             <span class="portfolio-item-tag">Exterior</span>
-            <div class="portfolio-item-name">Piscina</div>
+            <div class="portfolio-item-name" data-imo-piscina>Piscina</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SEPARADOR -->
   <div class="portfolio-separator">
     <span class="portfolio-separator-line"></span>
     <span class="portfolio-separator-diamond"></span>
     <span class="portfolio-separator-line"></span>
   </div>
 
-  <!-- PRÓXIMAS CASAS: descomente e adapte quando tiver imagens -->
-  <!-- 
+  <!--
+  ════════════════════════════════════════════════════════
+  ADICIONAR NOVA CASA — copie este bloco, descomente e adapte.
+  1. Crie a pasta images/casa2/ no GitHub
+  2. Faça upload das fotos
+  3. Adapte os textos e os caminhos src=""
+  ════════════════════════════════════════════════════════
   <div class="portfolio-projeto reveal">
     <div class="portfolio-projeto-header">
       <span class="portfolio-projeto-num">02 —</span>
@@ -747,34 +626,25 @@ footer {
       <span class="portfolio-projeto-tag">Tipo · Localização</span>
     </div>
     <div class="portfolio-grid">
-      <div class="portfolio-item portfolio-item-main" onclick="openModal('images/casa2/foto1.jpg', 'Tipo', 'Descrição')">
-        <img src="images/casa2/foto1.jpg" alt="Foto principal">
+      <div class="portfolio-item portfolio-item-main" onclick="openModal('images/casa2/foto1.jpg','Tipo','Descrição')">
+        <img src="images/casa2/foto1.jpg" alt="Foto Principal">
         <div class="portfolio-overlay">
           <span class="portfolio-item-tag">Tipo</span>
           <div class="portfolio-item-name">Descrição</div>
         </div>
       </div>
       <div class="portfolio-col-right">
-        <div class="portfolio-item" onclick="openModal('images/casa2/foto2.jpg', 'Tipo', 'Descrição')">
-          <img src="images/casa2/foto2.jpg" alt="Foto">
-          <div class="portfolio-overlay">
-            <span class="portfolio-item-tag">Tipo</span>
-            <div class="portfolio-item-name">Descrição</div>
-          </div>
+        <div class="portfolio-item" onclick="openModal('images/casa2/foto2.jpg','Tipo','Descrição')">
+          <img src="images/casa2/foto2.jpg" alt="Foto 2">
+          <div class="portfolio-overlay"><span class="portfolio-item-tag">Tipo</span><div class="portfolio-item-name">Descrição</div></div>
         </div>
-        <div class="portfolio-item" onclick="openModal('images/casa2/foto3.jpg', 'Tipo', 'Descrição')">
-          <img src="images/casa2/foto3.jpg" alt="Foto">
-          <div class="portfolio-overlay">
-            <span class="portfolio-item-tag">Tipo</span>
-            <div class="portfolio-item-name">Descrição</div>
-          </div>
+        <div class="portfolio-item" onclick="openModal('images/casa2/foto3.jpg','Tipo','Descrição')">
+          <img src="images/casa2/foto3.jpg" alt="Foto 3">
+          <div class="portfolio-overlay"><span class="portfolio-item-tag">Tipo</span><div class="portfolio-item-name">Descrição</div></div>
         </div>
-        <div class="portfolio-item" onclick="openModal('images/casa2/foto4.jpg', 'Tipo', 'Descrição')">
-          <img src="images/casa2/foto4.jpg" alt="Foto">
-          <div class="portfolio-overlay">
-            <span class="portfolio-item-tag">Tipo</span>
-            <div class="portfolio-item-name">Descrição</div>
-          </div>
+        <div class="portfolio-item" onclick="openModal('images/casa2/foto4.jpg','Tipo','Descrição')">
+          <img src="images/casa2/foto4.jpg" alt="Foto 4">
+          <div class="portfolio-overlay"><span class="portfolio-item-tag">Tipo</span><div class="portfolio-item-name">Descrição</div></div>
         </div>
       </div>
     </div>
@@ -783,7 +653,7 @@ footer {
 
   <div class="portfolio-note reveal">
     <span class="portfolio-note-icon">i</span>
-    <p>Para ver mais trabalhos, visite o nosso <strong><a href="https://www.instagram.com/marinacarvalho.arquitectura" target="_blank" style="color:var(--accent);text-decoration:underline;">Instagram</a></strong>.</p>
+    <p data-portfolio-note>Para ver mais trabalhos, visite o nosso <strong><a href="https://www.instagram.com/marinacarvalho.arquitectura" target="_blank" style="color:var(--accent);text-decoration:underline;">Instagram</a></strong>.</p>
   </div>
 </section>
 
@@ -792,57 +662,76 @@ footer {
   <div class="section-header light reveal">
     <div class="section-eyebrow">
       <span class="section-eyebrow-line"></span>
-      <span class="section-eyebrow-text">04 — Contacto</span>
+      <span class="section-eyebrow-text" data-sec-contacto-label>04 — Contacto</span>
     </div>
-    <h2 class="section-title">Vamos <em>criar</em><br>algo juntos.</h2>
+    <h2 class="section-title" data-sec-contacto-title>Vamos <em>criar</em><br>algo juntos.</h2>
   </div>
   <div class="contactos-grid">
     <div class="reveal">
-      <p class="contactos-intro">Tem um projecto em mente? Estamos prontos para transformar a sua visão em realidade.</p>
+      <p class="contactos-intro" data-contacto-intro>Tem um projecto em mente? Estamos prontos para transformar a sua visão em realidade.</p>
       <div class="contact-list">
         <div>
-          <div class="contact-entry-label">Email</div>
+          <div class="contact-entry-label" data-label-email>Email</div>
           <a href="mailto:geral@marinacarvalhoarquitectura.pt" class="contact-entry-value">geral@marinacarvalhoarquitectura.pt</a>
         </div>
         <div>
-          <div class="contact-entry-label">Localização</div>
-          <span class="contact-entry-value">Montijo, Setúbal · Portugal</span>
+          <div class="contact-entry-label" data-label-tel>Telefone</div>
+          <a href="tel:+351963910427" class="contact-entry-value">+351 963 910 427</a>
         </div>
         <div>
-          <div class="contact-entry-label">Área de Actuação</div>
-          <span class="contact-entry-value">Grande Lisboa e todo o País</span>
+          <div class="contact-entry-label" data-label-morada>Morada</div>
+          <span class="contact-entry-value">Travessa dos Quintais 1F<br>2870 Montijo, Portugal</span>
+        </div>
+        <div>
+          <div class="contact-entry-label" data-label-area>Área de Actuação</div>
+          <span class="contact-entry-value" data-area-value>Grande Lisboa e todo o País</span>
         </div>
       </div>
+
+      <!-- MAPA GOOGLE — Travessa dos Quintais 1F, Montijo -->
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.5!2d-8.970205!3d38.7034055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1939a05e71d50d%3A0xc64caee6d4ccb366!2sTravessa%20dos%20Quintais%201F%2C%202870%20Montijo!5e0!3m2!1spt!2spt!4v1"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Marina Carvalho Arquitectura — Travessa dos Quintais 1F, Montijo">
+        </iframe>
+        <div class="contact-map-label">
+          <span>📍 Travessa dos Quintais 1F · Montijo</span>
+          <a href="https://maps.app.goo.gl/drcNqauEcy4TGs2D9" target="_blank" data-mapa-link>Abrir no Google Maps →</a>
+        </div>
+      </div>
+
       <div class="social-row">
         <a href="https://pt.linkedin.com/in/marina-carvalho-971504220" target="_blank" class="social-pill">LinkedIn</a>
         <a href="https://www.instagram.com/marinacarvalho.arquitectura" target="_blank" class="social-pill">Instagram</a>
         <a href="https://linktr.ee/marinacarvalho.arquitectura" target="_blank" class="social-pill">Linktree</a>
       </div>
     </div>
+
     <div class="reveal">
-      <p class="contact-form-title">Envie-nos uma mensagem</p>
+      <p class="contact-form-title" data-form-title>Envie-nos uma mensagem</p>
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/xgodwzrj" method="POST">
         <div class="form-row">
-          <div class="form-group"><label for="nome">Nome *</label><input type="text" id="nome" name="nome" required placeholder="O seu nome"></div>
-          <div class="form-group"><label for="telefone">Telefone</label><input type="tel" id="telefone" name="telefone" placeholder="+351 9xx xxx xxx"></div>
+          <div class="form-group"><label data-form-nome>Nome *</label><input type="text" name="nome" required data-ph-nome placeholder="O seu nome"></div>
+          <div class="form-group"><label data-form-tel>Telefone</label><input type="tel" name="telefone" placeholder="+351 9xx xxx xxx"></div>
         </div>
-        <div class="form-group"><label for="email">Email *</label><input type="email" id="email" name="email" required placeholder="email@exemplo.com"></div>
+        <div class="form-group"><label>Email *</label><input type="email" name="email" required placeholder="email@exemplo.com"></div>
         <div class="form-group">
-          <label for="assunto">Tipo de projecto</label>
-          <select id="assunto" name="assunto">
-            <option value="">— Seleccione —</option>
-            <option>Projecto de Arquitectura</option>
-            <option>Consultoria</option>
-            <option>Fiscalização de Obras</option>
-            <option>Projecto de Especialidades</option>
-            <option>Outro</option>
+          <label data-form-assunto>Tipo de projecto</label>
+          <select name="assunto">
+            <option value="" data-opt0>— Seleccione —</option>
+            <option data-opt1>Projecto de Arquitectura</option>
+            <option data-opt2>Consultoria</option>
+            <option data-opt3>Fiscalização de Obras</option>
+            <option data-opt4>Projecto de Especialidades</option>
+            <option data-opt5>Outro</option>
           </select>
         </div>
-        <div class="form-group"><label for="mensagem">Mensagem *</label><textarea id="mensagem" name="mensagem" rows="5" required placeholder="Descreva o seu projecto ou questão..."></textarea></div>
-        <div class="form-msg success" id="formSuccess">✓ Mensagem enviada com sucesso. Entraremos em contacto brevemente.</div>
-        <div class="form-msg error" id="formError">✗ Ocorreu um erro. Por favor tente novamente ou envie email directamente.</div>
-        <button type="submit" class="btn-primary" style="border:none;cursor:pointer;margin-top:0.5rem;">Enviar mensagem →</button>
-        <p class="form-note">* Campos obrigatórios. Responderemos no prazo de 1–2 dias úteis.</p>
+        <div class="form-group"><label data-form-msg>Mensagem *</label><textarea name="mensagem" rows="5" required data-ph-msg placeholder="Descreva o seu projecto ou questão..."></textarea></div>
+        <div class="form-msg success" id="formSuccess" data-form-success>✓ Mensagem enviada com sucesso. Entraremos em contacto brevemente.</div>
+        <div class="form-msg error" id="formError" data-form-error>✗ Ocorreu um erro. Por favor tente novamente ou envie email directamente.</div>
+        <button type="submit" class="btn-primary" style="border:none;cursor:pointer;margin-top:0.5rem;" data-form-send>Enviar mensagem →</button>
+        <p class="form-note" data-form-note>* Campos obrigatórios. Responderemos no prazo de 1–2 dias úteis.</p>
       </form>
     </div>
   </div>
@@ -852,102 +741,288 @@ footer {
 <footer>
   <div class="footer-brand">Marina Carvalho Arquitectura</div>
   <ul class="footer-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#sobre" data-nav-sobre>Sobre</a></li>
+    <li><a href="#servicos" data-nav-servicos>Serviços</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#contactos">Contacto</a></li>
+    <li><a href="#contactos" data-nav-contacto>Contacto</a></li>
   </ul>
   <p class="footer-copy">© 2025 Marina Carvalho – Arquitectura Lda · Todos os direitos reservados</p>
 </footer>
 
 <script>
-  /* ═ MODAL DE IMAGENS ═ */
-  function openModal(src, tag, title) {
-    document.getElementById('modalImage').src = src;
-    document.getElementById('modalTag').textContent = tag;
-    document.getElementById('modalTitle').textContent = title;
-    document.getElementById('imageModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
+/* ══════════════════════════════════════════════════════
+   TRADUÇÕES
+══════════════════════════════════════════════════════ */
+const translations = {
+  pt: {
+    'data-nav-sobre': 'Sobre',
+    'data-nav-servicos': 'Serviços',
+    'data-nav-contacto': 'Contacto',
+    'data-nav-gabinete': 'Gabinete de Arquitectura · Montijo',
+    'data-hero-t1': 'Arquitectura',
+    'data-hero-t2': 'que transforma',
+    'data-hero-t3': 'sonhos em espaço.',
+    'data-hero-desc': 'Cada projecto é único. Desenvolvemos soluções personalizadas com rigor, criatividade e atenção ao detalhe — do estudo prévio à conclusão da obra.',
+    'data-btn-iniciar': 'Iniciar projecto →',
+    'data-btn-portfolio': 'Ver portfolio',
+    'data-sec-sobre-label': '01 — Sobre nós',
+    'data-sec-sobre-title': 'Uma visão <em>diferente</em><br>da arquitectura.',
+    'data-sobre-quote': '"Arquitectura como forma de transformar sonhos em espaços reais e funcionais."',
+    'data-sobre-p1': 'Sou a Marina Carvalho, arquitecta e sócio-gerente da Marina Carvalho – Arquitectura Lda, um gabinete sediado no coração do Montijo.',
+    'data-sobre-p2': 'Com uma metodologia própria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente é único, e por isso, o nosso serviço também o é.',
+    'data-sobre-p3': 'Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto — é isso que dá sentido ao nosso trabalho.',
+    'data-foto-label': 'Fotografia · Em breve',
+    'data-card-personalizado': 'Personalizado',
+    'data-card-dedicacao': 'Dedicação',
+    'data-card-local': 'Grande Lisboa · Portugal',
+    'data-sec-servicos-label': '02 — Serviços',
+    'data-sec-servicos-title': 'O que <em>fazemos</em><br>por si.',
+    'data-s1-title': 'Projectos de Arquitectura',
+    'data-s1-desc': 'Desenvolvemos projectos completos e personalizados, desde a análise inicial até à execução, garantindo excelência em cada etapa do processo.',
+    'data-s1-li1': 'Estudo Prévio', 'data-s1-li2': 'Informação Prévia', 'data-s1-li3': 'Licenciamento', 'data-s1-li4': 'Comunicação Prévia', 'data-s1-li5': 'Execução e Acompanhamento',
+    'data-s2-title': 'Consultoria em Arquitectura',
+    'data-s2-desc': 'Analisamos as suas necessidades e fornecemos soluções personalizadas que aliam estética, funcionalidade e sustentabilidade.',
+    'data-s3-title': 'Fiscalização de Obras',
+    'data-s3-desc': 'Monitorizamos todas as fases da construção, assegurando a conformidade com as especificações técnicas e normas legais.',
+    'data-s4-title': 'Projectos de Especialidades',
+    'data-s4-desc': 'Estruturas, instalações eléctricas, hidráulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global.',
+    'data-sec-portfolio-label': '03 — Portfolio',
+    'data-sec-portfolio-title': 'Os nossos <em>projectos</em>.',
+    'data-portfolio-intro': 'Cada obra conta uma história. Clique nas imagens para ver em detalhe.',
+    'data-p1-title': 'Moradia Unifamiliar com Piscina',
+    'data-p1-tag': 'Projecto de Arquitectura · Montijo',
+    'data-imo-alcado': 'Alçado', 'data-imo-vista': 'Vista Principal',
+    'data-imo-logradouro': 'Logradouro', 'data-imo-logradouro2': 'Logradouro — Vista 2', 'data-imo-piscina': 'Piscina',
+    'data-portfolio-note': 'Para ver mais trabalhos, visite o nosso <strong><a href="https://www.instagram.com/marinacarvalho.arquitectura" target="_blank" style="color:var(--accent);text-decoration:underline;">Instagram</a></strong>.',
+    'data-sec-contacto-label': '04 — Contacto',
+    'data-sec-contacto-title': 'Vamos <em>criar</em><br>algo juntos.',
+    'data-contacto-intro': 'Tem um projecto em mente? Estamos prontos para transformar a sua visão em realidade.',
+    'data-label-email': 'Email', 'data-label-tel': 'Telefone', 'data-label-morada': 'Morada', 'data-label-area': 'Área de Actuação',
+    'data-area-value': 'Grande Lisboa e todo o País',
+    'data-mapa-link': 'Abrir no Google Maps →',
+    'data-form-title': 'Envie-nos uma mensagem',
+    'data-form-nome': 'Nome *', 'data-form-tel': 'Telefone', 'data-form-assunto': 'Tipo de projecto', 'data-form-msg': 'Mensagem *',
+    'data-ph-nome': 'O seu nome', 'data-ph-msg': 'Descreva o seu projecto ou questão...',
+    'data-opt0': '— Seleccione —', 'data-opt1': 'Projecto de Arquitectura', 'data-opt2': 'Consultoria', 'data-opt3': 'Fiscalização de Obras', 'data-opt4': 'Projecto de Especialidades', 'data-opt5': 'Outro',
+    'data-form-send': 'Enviar mensagem →',
+    'data-form-success': '✓ Mensagem enviada com sucesso. Entraremos em contacto brevemente.',
+    'data-form-error': '✗ Ocorreu um erro. Por favor tente novamente ou envie email directamente.',
+    'data-form-note': '* Campos obrigatórios. Responderemos no prazo de 1–2 dias úteis.',
+  },
+  en: {
+    'data-nav-sobre': 'About',
+    'data-nav-servicos': 'Services',
+    'data-nav-contacto': 'Contact',
+    'data-nav-gabinete': 'Architecture Studio · Montijo',
+    'data-hero-t1': 'Architecture',
+    'data-hero-t2': 'that transforms',
+    'data-hero-t3': 'dreams into space.',
+    'data-hero-desc': 'Every project is unique. We develop personalised solutions with rigour, creativity and attention to detail — from the initial brief to project completion.',
+    'data-btn-iniciar': 'Start a project →',
+    'data-btn-portfolio': 'View portfolio',
+    'data-sec-sobre-label': '01 — About us',
+    'data-sec-sobre-title': 'A <em>different</em> vision<br>of architecture.',
+    'data-sobre-quote': '"Architecture as a way of turning dreams into real, functional spaces."',
+    'data-sobre-p1': 'I am Marina Carvalho, architect and managing partner of Marina Carvalho – Arquitectura Lda, a studio based in the heart of Montijo.',
+    'data-sobre-p2': 'With a unique methodology and close attention to every detail, we develop precise, personalised projects with soul. Every client is unique, and our service reflects that.',
+    'data-sobre-p3': 'Nothing motivates us more than seeing the joy on our clients' faces when we deliver a project — that is what gives meaning to our work.',
+    'data-foto-label': 'Photograph · Coming soon',
+    'data-card-personalizado': 'Personalised',
+    'data-card-dedicacao': 'Dedication',
+    'data-card-local': 'Greater Lisbon · Portugal',
+    'data-sec-servicos-label': '02 — Services',
+    'data-sec-servicos-title': 'What we <em>do</em><br>for you.',
+    'data-s1-title': 'Architecture Projects',
+    'data-s1-desc': 'We develop complete, personalised projects from initial analysis through to execution, ensuring excellence at every stage of the process.',
+    'data-s1-li1': 'Preliminary Study', 'data-s1-li2': 'Prior Information', 'data-s1-li3': 'Planning Permission', 'data-s1-li4': 'Prior Notification', 'data-s1-li5': 'Execution & Supervision',
+    'data-s2-title': 'Architecture Consultancy',
+    'data-s2-desc': 'We analyse your needs and provide personalised solutions that combine aesthetics, functionality and sustainability.',
+    'data-s3-title': 'Construction Supervision',
+    'data-s3-desc': 'We monitor all phases of construction, ensuring compliance with technical specifications and legal standards.',
+    'data-s4-title': 'Specialist Engineering',
+    'data-s4-desc': 'Structural, electrical, hydraulic, HVAC and more. Each specialty integrated harmoniously into the overall project.',
+    'data-sec-portfolio-label': '03 — Portfolio',
+    'data-sec-portfolio-title': 'Our <em>projects</em>.',
+    'data-portfolio-intro': 'Every building tells a story. Click on the images to view in detail.',
+    'data-p1-title': 'Single-Family House with Pool',
+    'data-p1-tag': 'Architecture Project · Montijo',
+    'data-imo-alcado': 'Elevation', 'data-imo-vista': 'Main View',
+    'data-imo-logradouro': 'Garden', 'data-imo-logradouro2': 'Garden — View 2', 'data-imo-piscina': 'Swimming Pool',
+    'data-portfolio-note': 'To see more work, visit our <strong><a href="https://www.instagram.com/marinacarvalho.arquitectura" target="_blank" style="color:var(--accent);text-decoration:underline;">Instagram</a></strong>.',
+    'data-sec-contacto-label': '04 — Contact',
+    'data-sec-contacto-title': 'Let's <em>create</em><br>something together.',
+    'data-contacto-intro': 'Have a project in mind? We are ready to turn your vision into reality.',
+    'data-label-email': 'Email', 'data-label-tel': 'Phone', 'data-label-morada': 'Address', 'data-label-area': 'Area of Operation',
+    'data-area-value': 'Greater Lisbon and nationwide',
+    'data-mapa-link': 'Open in Google Maps →',
+    'data-form-title': 'Send us a message',
+    'data-form-nome': 'Name *', 'data-form-tel': 'Phone', 'data-form-assunto': 'Project type', 'data-form-msg': 'Message *',
+    'data-ph-nome': 'Your name', 'data-ph-msg': 'Describe your project or enquiry...',
+    'data-opt0': '— Select —', 'data-opt1': 'Architecture Project', 'data-opt2': 'Consultancy', 'data-opt3': 'Construction Supervision', 'data-opt4': 'Specialist Engineering', 'data-opt5': 'Other',
+    'data-form-send': 'Send message →',
+    'data-form-success': '✓ Message sent successfully. We will be in touch shortly.',
+    'data-form-error': '✗ An error occurred. Please try again or email us directly.',
+    'data-form-note': '* Required fields. We respond within 1–2 working days.',
+  },
+  es: {
+    'data-nav-sobre': 'Sobre',
+    'data-nav-servicos': 'Servicios',
+    'data-nav-contacto': 'Contacto',
+    'data-nav-gabinete': 'Estudio de Arquitectura · Montijo',
+    'data-hero-t1': 'Arquitectura',
+    'data-hero-t2': 'que transforma',
+    'data-hero-t3': 'sueños en espacio.',
+    'data-hero-desc': 'Cada proyecto es único. Desarrollamos soluciones personalizadas con rigor, creatividad y atención al detalle — desde el estudio previo hasta la conclusión de la obra.',
+    'data-btn-iniciar': 'Iniciar proyecto →',
+    'data-btn-portfolio': 'Ver portfolio',
+    'data-sec-sobre-label': '01 — Sobre nosotros',
+    'data-sec-sobre-title': 'Una visión <em>diferente</em><br>de la arquitectura.',
+    'data-sobre-quote': '"La arquitectura como forma de transformar sueños en espacios reales y funcionales."',
+    'data-sobre-p1': 'Soy Marina Carvalho, arquitecta y socia-gerente de Marina Carvalho – Arquitectura Lda, un estudio ubicado en el corazón de Montijo.',
+    'data-sobre-p2': 'Con una metodología propia y una atención especial a cada detalle, desarrollamos proyectos precisos, personalizados y con alma. Cada cliente es único, y por eso nuestro servicio también lo es.',
+    'data-sobre-p3': 'Nada nos motiva más que ver la alegría en los ojos de nuestros clientes cuando entregamos un proyecto — eso es lo que da sentido a nuestro trabajo.',
+    'data-foto-label': 'Fotografía · Próximamente',
+    'data-card-personalizado': 'Personalizado',
+    'data-card-dedicacao': 'Dedicación',
+    'data-card-local': 'Gran Lisboa · Portugal',
+    'data-sec-servicos-label': '02 — Servicios',
+    'data-sec-servicos-title': 'Lo que <em>hacemos</em><br>por usted.',
+    'data-s1-title': 'Proyectos de Arquitectura',
+    'data-s1-desc': 'Desarrollamos proyectos completos y personalizados, desde el análisis inicial hasta la ejecución, garantizando excelencia en cada etapa del proceso.',
+    'data-s1-li1': 'Estudio Previo', 'data-s1-li2': 'Información Previa', 'data-s1-li3': 'Licencia de Obras', 'data-s1-li4': 'Comunicación Previa', 'data-s1-li5': 'Ejecución y Seguimiento',
+    'data-s2-title': 'Consultoría en Arquitectura',
+    'data-s2-desc': 'Analizamos sus necesidades y proporcionamos soluciones personalizadas que combinan estética, funcionalidad y sostenibilidad.',
+    'data-s3-title': 'Supervisión de Obras',
+    'data-s3-desc': 'Monitorizamos todas las fases de la construcción, asegurando el cumplimiento de las especificaciones técnicas y las normas legales.',
+    'data-s4-title': 'Proyectos de Especialidades',
+    'data-s4-desc': 'Estructuras, instalaciones eléctricas, hidráulicas, HVAC y mucho más. Cada especialidad integrada armoniosamente en el proyecto global.',
+    'data-sec-portfolio-label': '03 — Portfolio',
+    'data-sec-portfolio-title': 'Nuestros <em>proyectos</em>.',
+    'data-portfolio-intro': 'Cada obra cuenta una historia. Haga clic en las imágenes para ver en detalle.',
+    'data-p1-title': 'Vivienda Unifamiliar con Piscina',
+    'data-p1-tag': 'Proyecto de Arquitectura · Montijo',
+    'data-imo-alcado': 'Alzado', 'data-imo-vista': 'Vista Principal',
+    'data-imo-logradouro': 'Jardín', 'data-imo-logradouro2': 'Jardín — Vista 2', 'data-imo-piscina': 'Piscina',
+    'data-portfolio-note': 'Para ver más trabajos, visita nuestro <strong><a href="https://www.instagram.com/marinacarvalho.arquitectura" target="_blank" style="color:var(--accent);text-decoration:underline;">Instagram</a></strong>.',
+    'data-sec-contacto-label': '04 — Contacto',
+    'data-sec-contacto-title': 'Vamos a <em>crear</em><br>algo juntos.',
+    'data-contacto-intro': '¿Tiene un proyecto en mente? Estamos listos para transformar su visión en realidad.',
+    'data-label-email': 'Email', 'data-label-tel': 'Teléfono', 'data-label-morada': 'Dirección', 'data-label-area': 'Área de Actuación',
+    'data-area-value': 'Gran Lisboa y todo el País',
+    'data-mapa-link': 'Abrir en Google Maps →',
+    'data-form-title': 'Envíenos un mensaje',
+    'data-form-nome': 'Nombre *', 'data-form-tel': 'Teléfono', 'data-form-assunto': 'Tipo de proyecto', 'data-form-msg': 'Mensaje *',
+    'data-ph-nome': 'Su nombre', 'data-ph-msg': 'Describa su proyecto o consulta...',
+    'data-opt0': '— Seleccione —', 'data-opt1': 'Proyecto de Arquitectura', 'data-opt2': 'Consultoría', 'data-opt3': 'Supervisión de Obras', 'data-opt4': 'Proyectos de Especialidades', 'data-opt5': 'Otro',
+    'data-form-send': 'Enviar mensaje →',
+    'data-form-success': '✓ Mensaje enviado con éxito. Nos pondremos en contacto en breve.',
+    'data-form-error': '✗ Se produjo un error. Por favor inténtelo de nuevo o envíenos un email directamente.',
+    'data-form-note': '* Campos obligatorios. Respondemos en un plazo de 1–2 días laborables.',
   }
-  function closeModal() {
-    document.getElementById('imageModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  // Fechar modal ao clicar fora
-  document.getElementById('imageModal').addEventListener('click', e => {
-    if (e.target.id === 'imageModal') closeModal();
-  });
-  // Fechar com ESC
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
+};
 
-  /* ═ NAVBAR ═ */
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => { 
-    navbar.classList.toggle('scrolled', window.scrollY > 60); 
-  });
+let currentLang = 'pt';
 
-  /* ═ HAMBURGER ═ */
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-  });
-  function closeMobile() {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
 
-  /* ═ SCROLL REVEAL ═ */
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 90);
-        observer.unobserve(entry.target);
+  // Actualizar botões da barra de língua
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+  // Actualizar todos os elementos com atributos data-*
+  Object.entries(t).forEach(([attr, value]) => {
+    document.querySelectorAll(`[${attr}]`).forEach(el => {
+      if (attr === 'data-ph-nome') {
+        el.placeholder = value;
+      } else if (attr === 'data-ph-msg') {
+        el.placeholder = value;
+      } else {
+        el.innerHTML = value;
       }
     });
-  }, { threshold: 0.06, rootMargin: '0px 0px -50px 0px' });
-  reveals.forEach(el => observer.observe(el));
+  });
 
-  /* ═ FORMULÁRIO FORMSPREE AJAX ═ */
-  const form = document.getElementById('contactForm');
-  const successMsg = document.getElementById('formSuccess');
-  const errorMsg = document.getElementById('formError');
-  if (form) {
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      successMsg.style.display = 'none';
-      errorMsg.style.display = 'none';
-      const btn = form.querySelector('button[type="submit"]');
-      const orig = btn.textContent;
-      btn.textContent = 'A enviar...';
-      btn.disabled = true;
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST', 
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          form.reset();
-          successMsg.style.display = 'block';
-          successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else { 
-          throw new Error(); 
-        }
-      } catch { 
-        errorMsg.style.display = 'block'; 
-      } finally { 
-        btn.textContent = orig; 
-        btn.disabled = false; 
-      }
-    });
-  }
+  // Actualizar lang do html
+  document.documentElement.lang = lang;
+}
+
+/* ─── MODAL ─── */
+function openModal(src, tag, title) {
+  document.getElementById('modalImage').src = src;
+  document.getElementById('modalTag').textContent = tag;
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('imageModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('imageModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('imageModal').addEventListener('click', e => {
+  if (e.target.id === 'imageModal') closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ─── NAVBAR ─── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+
+/* ─── HAMBURGER ─── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobile() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ─── SCROLL REVEAL ─── */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 90);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+/* ─── FORMULÁRIO AJAX ─── */
+const form = document.getElementById('contactForm');
+const successMsg = document.getElementById('formSuccess');
+const errorMsg = document.getElementById('formError');
+if (form) {
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+    const btn = form.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    const t = translations[currentLang];
+    btn.textContent = currentLang === 'pt' ? 'A enviar...' : currentLang === 'en' ? 'Sending...' : 'Enviando...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST', body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        successMsg.style.display = 'block';
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else { throw new Error(); }
+    } catch { errorMsg.style.display = 'block'; }
+    finally { btn.textContent = orig; btn.disabled = false; }
+  });
+}
 </script>
 </body>
 </html>
