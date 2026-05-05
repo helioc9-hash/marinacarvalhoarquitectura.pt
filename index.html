@@ -6,8 +6,14 @@
 <meta name="description" content="Marina Carvalho Arquitectura — Gabinete de arquitectura sediado em Montijo.">
 <title>Marina Carvalho Arquitectura</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%231C1A17'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='34' fill='%23C4A882'>MC</text></svg>">
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4B2MSXBRK8"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4B2MSXBRK8');</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4B2MSXBRK8');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -24,14 +30,14 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--cream);color:var(--warm-dark);overflow-x:hidden}
 
-/* LANG BAR */
+/* ── LANG BAR ── */
 .lang-bar{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;justify-content:flex-end;align-items:center;padding:0.35rem 5rem;background:var(--warm-dark);border-bottom:1px solid rgba(196,168,130,0.15);gap:0.4rem}
 .lang-btn{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,240,232,0.4);background:none;border:none;cursor:pointer;padding:0.2rem 0.6rem;border-radius:2px;transition:color 0.2s,background 0.2s;font-family:var(--sans)}
 .lang-btn:hover{color:rgba(245,240,232,0.85)}
 .lang-btn.active{color:var(--accent);background:rgba(196,168,130,0.1)}
 .lang-sep{width:1px;height:10px;background:rgba(196,168,130,0.2)}
 
-/* NAV */
+/* ── NAV ── */
 nav{position:fixed;top:29px;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:0.9rem 5rem;background:rgba(245,240,232,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:padding 0.35s,box-shadow 0.35s}
 nav.scrolled{padding:0.6rem 5rem;box-shadow:0 4px 40px rgba(28,26,23,0.07)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
@@ -57,19 +63,34 @@ nav.scrolled{padding:0.6rem 5rem;box-shadow:0 4px 40px rgba(28,26,23,0.07)}
 .mobile-menu a{font-family:var(--serif);font-size:2.5rem;font-weight:300;font-style:italic;color:var(--warm-dark);text-decoration:none;transition:color 0.2s}
 .mobile-menu a:hover{color:var(--accent)}
 
-/* MODAL */
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:1000;align-items:center;justify-content:center}
-.modal.open{display:flex;animation:fadeIn 0.25s ease}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal-content{position:relative;max-width:92vw;max-height:90vh;background:var(--warm-dark);overflow:hidden}
-.modal img{width:100%;height:100%;max-height:85vh;object-fit:contain;display:block}
-.modal-close{position:absolute;top:1rem;right:1rem;background:var(--accent);border:none;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--warm-dark);transition:background 0.2s;z-index:2}
-.modal-close:hover{background:var(--cream)}
-.modal-info{position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(0,0,0,0.85),transparent)}
-.modal-tag{font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem}
-.modal-title{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--cream)}
+/* ── GALERIA MODAL ── */
+.gallery-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(20,18,14,0.96);flex-direction:column}
+.gallery-modal.open{display:flex}
+.gallery-modal-header{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;border-bottom:1px solid rgba(196,168,130,0.15);flex-shrink:0}
+.gallery-modal-title{font-family:var(--serif);font-size:1.3rem;font-weight:300;font-style:italic;color:var(--cream)}
+.gallery-modal-subtitle{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--stone);margin-top:0.2rem}
+.gallery-modal-close{background:none;border:1px solid rgba(196,168,130,0.3);color:var(--accent);width:38px;height:38px;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s,border-color 0.2s}
+.gallery-modal-close:hover{background:var(--accent);color:var(--warm-dark);border-color:var(--accent)}
 
-/* HERO */
+/* Imagem principal */
+.gallery-main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:1.5rem}
+.gallery-main img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(28,26,23,0.7);border:1px solid rgba(196,168,130,0.25);color:var(--accent);width:44px;height:44px;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background 0.2s;z-index:2}
+.gallery-arrow:hover{background:rgba(196,168,130,0.2)}
+.gallery-arrow-left{left:1rem}
+.gallery-arrow-right{right:1rem}
+.gallery-img-counter{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);font-size:0.6rem;letter-spacing:0.2em;color:rgba(245,240,232,0.4)}
+
+/* Miniaturas */
+.gallery-thumbs{display:flex;gap:6px;padding:1rem 2.5rem;overflow-x:auto;flex-shrink:0;border-top:1px solid rgba(196,168,130,0.1);background:rgba(10,10,8,0.5)}
+.gallery-thumbs::-webkit-scrollbar{height:3px}
+.gallery-thumbs::-webkit-scrollbar-track{background:transparent}
+.gallery-thumbs::-webkit-scrollbar-thumb{background:rgba(196,168,130,0.3);border-radius:2px}
+.gallery-thumb{width:80px;height:60px;object-fit:cover;cursor:pointer;opacity:0.45;border:1px solid transparent;transition:opacity 0.2s,border-color 0.2s;flex-shrink:0}
+.gallery-thumb.active{opacity:1;border-color:var(--accent)}
+.gallery-thumb:hover{opacity:0.8}
+
+/* ── HERO ── */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding-top:29px}
 .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,168,130,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(196,168,130,0.06) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
 .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 20%,rgba(245,240,232,0.88) 68%);pointer-events:none}
@@ -100,7 +121,7 @@ nav.scrolled{padding:0.6rem 5rem;box-shadow:0 4px 40px rgba(28,26,23,0.07)}
 @keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.4);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
 .hero-scroll-text{font-size:0.52rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--stone)}
 
-/* SECÇÕES */
+/* ── SECÇÕES ── */
 section{padding:8rem 5rem;position:relative}
 .section-header{margin-bottom:5rem}
 .section-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
@@ -112,7 +133,7 @@ section{padding:8rem 5rem;position:relative}
 .light .section-eyebrow-text{color:rgba(245,240,232,0.4)}
 .light .section-title{color:var(--cream)}
 
-/* SOBRE */
+/* ── SOBRE ── */
 #sobre{background:var(--warm-dark);color:var(--cream)}
 #sobre::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(196,168,130,0.4),transparent)}
 .sobre-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:7rem;align-items:start}
@@ -131,7 +152,7 @@ section{padding:8rem 5rem;position:relative}
 .sobre-card-label{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(245,240,232,0.28)}
 .sobre-card:last-child .sobre-card-num{font-size:1.6rem;font-style:italic}
 
-/* SERVIÇOS */
+/* ── SERVIÇOS ── */
 #servicos{background:var(--cream)}
 .servicos-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
 .servico-item{padding:4rem;border:1px solid var(--line);margin:-1px 0 0 -1px;position:relative;overflow:hidden;transition:background 0.3s}
@@ -146,36 +167,69 @@ section{padding:8rem 5rem;position:relative}
 .servico-sub li:last-child{border-bottom:none}
 .servico-sub li::before{content:'→';color:var(--accent);font-size:0.68rem;flex-shrink:0}
 
-/* PORTFOLIO */
+/* ── PORTFOLIO — grelha de cartões ── */
 #portfolio{background:var(--cream-dark)}
 #portfolio::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--accent),transparent);opacity:0.3}
-.portfolio-intro{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--stone);margin-top:-3rem;margin-bottom:5rem}
-.portfolio-projeto{margin-bottom:5rem}
-.portfolio-projeto:last-child{margin-bottom:0}
-.portfolio-projeto-header{display:flex;align-items:baseline;gap:2rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
-.portfolio-projeto-num{font-family:var(--serif);font-size:0.8rem;font-style:italic;color:var(--accent);flex-shrink:0}
-.portfolio-projeto-title{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--warm-dark)}
-.portfolio-projeto-tag{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--stone);margin-left:auto;flex-shrink:0}
-.portfolio-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:5px}
-.portfolio-col-right{display:grid;grid-template-rows:1fr 1fr 1fr;gap:5px}
-.portfolio-item{position:relative;overflow:hidden;background:var(--dark2);cursor:pointer;min-height:220px;transition:transform 0.3s}
-.portfolio-item-main{min-height:540px}
-.portfolio-item:hover{transform:scale(1.01)}
-.portfolio-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;opacity:0.9}
-.portfolio-item:hover img{transform:scale(1.04);opacity:1}
-.portfolio-overlay{position:absolute;bottom:0;left:0;right:0;padding:2rem 1.8rem 1.8rem;background:linear-gradient(to top,rgba(20,18,14,0.88) 0%,rgba(20,18,14,0.35) 55%,transparent);transform:translateY(45%);transition:transform 0.38s cubic-bezier(0.25,0.46,0.45,0.94)}
-.portfolio-item:hover .portfolio-overlay{transform:translateY(0)}
-.portfolio-item-tag{display:inline-block;font-size:0.55rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:0.45rem}
-.portfolio-item-name{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:rgba(245,240,232,0.92);line-height:1.3}
-.portfolio-separator{display:flex;align-items:center;gap:1.5rem;margin:4rem 0}
-.portfolio-separator-line{flex:1;height:1px;background:var(--line)}
-.portfolio-separator-diamond{width:5px;height:5px;background:var(--accent);transform:rotate(45deg);flex-shrink:0}
-.portfolio-note{margin-top:3rem;padding:1.4rem 1.8rem;border:1px solid var(--line);background:var(--cream);display:flex;align-items:center;gap:1.2rem}
-.portfolio-note-icon{font-family:var(--serif);font-size:1.6rem;color:var(--accent);font-style:italic;flex-shrink:0}
-.portfolio-note p{font-size:0.79rem;color:var(--stone);line-height:1.7;font-weight:300}
-.portfolio-note strong{color:var(--warm-dark);font-weight:500}
+.portfolio-intro{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--stone);margin-top:-3rem;margin-bottom:4rem}
 
-/* CONTACTOS */
+/* Grelha de projectos: 3 colunas */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+
+/* Cartão de projecto */
+.project-card{
+  position:relative;overflow:hidden;cursor:pointer;
+  background:var(--dark2);
+  aspect-ratio:4/3;
+  border:1px solid var(--line);
+  transition:transform 0.35s,box-shadow 0.35s;
+}
+.project-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(28,26,23,0.25);
+}
+.project-card img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;opacity:0.85;
+  transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;
+}
+.project-card:hover img{transform:scale(1.06);opacity:1}
+
+.project-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(20,18,14,0.92) 0%,rgba(20,18,14,0.3) 50%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.5rem;
+  transition:background 0.3s;
+}
+.project-card:hover .project-card-overlay{
+  background:linear-gradient(to top,rgba(20,18,14,0.96) 0%,rgba(20,18,14,0.5) 60%,transparent 100%);
+}
+
+.project-card-tag{
+  font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:0.4rem;
+}
+.project-card-title{
+  font-family:var(--serif);font-size:1.15rem;font-weight:300;
+  color:rgba(245,240,232,0.95);line-height:1.25;margin-bottom:0.5rem;
+}
+.project-card-count{
+  font-size:0.6rem;letter-spacing:0.15em;color:rgba(245,240,232,0.35);
+}
+.project-card-btn{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);margin-top:0.8rem;
+  opacity:0;transform:translateY(6px);
+  transition:opacity 0.3s,transform 0.3s;
+}
+.project-card:hover .project-card-btn{opacity:1;transform:translateY(0)}
+
+/* ── CONTACTOS ── */
 #contactos{background:var(--warm-dark);color:var(--cream)}
 #contactos::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(196,168,130,0.4),transparent)}
 .contactos-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:7rem;align-items:start}
@@ -208,7 +262,7 @@ a.contact-entry-value:hover{color:var(--accent)}
 .form-msg.success{border-color:rgba(196,168,130,0.4);color:var(--accent);background:rgba(196,168,130,0.07)}
 .form-msg.error{border-color:rgba(200,80,60,0.3);color:#e88;background:rgba(200,80,60,0.05)}
 
-/* FOOTER */
+/* ── FOOTER ── */
 footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(196,168,130,0.1)}
 .footer-brand{font-family:var(--serif);font-size:0.9rem;color:rgba(245,240,232,0.25)}
 .footer-links{display:flex;gap:2.2rem;list-style:none}
@@ -216,11 +270,11 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
 .footer-links a:hover{color:var(--accent)}
 .footer-copy{font-size:0.6rem;color:rgba(245,240,232,0.12);width:100%;text-align:center;padding-top:1.2rem;border-top:1px solid rgba(196,168,130,0.06);margin-top:0.5rem}
 
-/* REVEAL */
+/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.85s ease,transform 0.85s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* MOBILE */
+/* ── MOBILE ── */
 @media(max-width:1024px){
   .lang-bar{padding:0.35rem 1.5rem}
   nav{padding:0.9rem 1.5rem;top:29px}
@@ -236,11 +290,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
   .sobre-grid{grid-template-columns:1fr;gap:4rem}
   .sobre-cards{grid-template-columns:1fr 1fr}
   .servicos-grid{grid-template-columns:1fr}
-  .portfolio-grid{grid-template-columns:1fr!important}
-  .portfolio-col-right{grid-template-rows:auto}
-  .portfolio-item-main{min-height:280px}
-  .portfolio-item{min-height:220px}
-  .portfolio-overlay{transform:translateY(0)}
+  .projects-grid{grid-template-columns:1fr 1fr}
   .contactos-grid{grid-template-columns:1fr;gap:4rem}
   .form-row{grid-template-columns:1fr}
   footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}
@@ -248,23 +298,31 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
 }
 @media(max-width:560px){
   .sobre-cards{grid-template-columns:1fr}
-  .portfolio-projeto-header{flex-wrap:wrap;gap:0.5rem}
-  .portfolio-projeto-tag{margin-left:0}
+  .projects-grid{grid-template-columns:1fr}
+  .gallery-thumbs{padding:0.75rem 1rem}
+  .gallery-modal-header{padding:1rem 1.2rem}
+  .gallery-main{padding:0.75rem}
 }
 </style>
 </head>
 <body>
 
-<!-- MODAL -->
-<div class="modal" id="imageModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal()">&times;</button>
-    <img id="modalImg" src="" alt="">
-    <div class="modal-info">
-      <div class="modal-tag" id="modalTag"></div>
-      <div class="modal-title" id="modalTitle"></div>
+<!-- ══ GALERIA MODAL ══ -->
+<div class="gallery-modal" id="galleryModal">
+  <div class="gallery-modal-header">
+    <div>
+      <div class="gallery-modal-title" id="gal-title">Projecto</div>
+      <div class="gallery-modal-subtitle" id="gal-subtitle"></div>
     </div>
+    <button class="gallery-modal-close" onclick="closeGallery()" aria-label="Fechar">&times;</button>
   </div>
+  <div class="gallery-main">
+    <button class="gallery-arrow gallery-arrow-left" onclick="galPrev()" aria-label="Anterior">&#8592;</button>
+    <img id="gal-main-img" src="" alt="Imagem do projecto">
+    <button class="gallery-arrow gallery-arrow-right" onclick="galNext()" aria-label="Seguinte">&#8594;</button>
+    <div class="gallery-img-counter" id="gal-counter">1 / 1</div>
+  </div>
+  <div class="gallery-thumbs" id="gal-thumbs"></div>
 </div>
 
 <!-- LANG BAR -->
@@ -316,14 +374,14 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <h1 class="hero-title">
       <span class="t1" id="h-t1">Arquitectura</span>
       <span class="t2" id="h-t2">que transforma</span>
-      <span class="t3" id="h-t3">sonhos em espaço.</span>
+      <span class="t3" id="h-t3">sonhos em espa&ccedil;o.</span>
     </h1>
     <div class="hero-ornament">
       <span class="hero-ornament-line"></span><span class="hero-ornament-diamond"></span><span class="hero-ornament-line"></span>
     </div>
-    <p class="hero-desc" id="h-desc">Cada projecto é único. Desenvolvemos soluções personalizadas com rigor, criatividade e atenção ao detalhe — do estudo prévio à conclusão da obra.</p>
+    <p class="hero-desc" id="h-desc">Cada projecto &eacute; &uacute;nico. Desenvolvemos solu&ccedil;&otilde;es personalizadas com rigor, criatividade e aten&ccedil;&atilde;o ao detalhe &mdash; do estudo pr&eacute;vio &agrave; conclus&atilde;o da obra.</p>
     <div class="hero-actions">
-      <a href="#contactos" class="btn-primary" id="h-btn1">Iniciar projecto →</a>
+      <a href="#contactos" class="btn-primary" id="h-btn1">Iniciar projecto &rarr;</a>
       <a href="#portfolio" class="btn-ghost" id="h-btn2">Ver portfolio</a>
     </div>
   </div>
@@ -333,29 +391,29 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
 <!-- SOBRE -->
 <section id="sobre">
   <div class="section-header light reveal">
-    <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" id="s1-label">01 — Sobre nós</span></div>
-    <h2 class="section-title" id="s1-title">Uma visão <em>diferente</em><br>da arquitectura.</h2>
+    <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" id="s1-label">01 &mdash; Sobre n&oacute;s</span></div>
+    <h2 class="section-title" id="s1-title">Uma vis&atilde;o <em>diferente</em><br>da arquitectura.</h2>
   </div>
   <div class="sobre-grid">
     <div class="sobre-text reveal">
-      <p class="sobre-quote" id="s-quote">&ldquo;Arquitectura como forma de transformar sonhos em espaços reais e funcionais.&rdquo;</p>
-      <p id="s-p1">Sou a Marina Carvalho, arquitecta e sócio-gerente da Marina Carvalho – Arquitectura Lda, um gabinete sediado no coração do Montijo.</p>
-      <p id="s-p2">Com uma metodologia própria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente é único, e por isso, o nosso serviço também o é.</p>
-      <p id="s-p3">Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto — é isso que dá sentido ao nosso trabalho.</p>
+      <p class="sobre-quote" id="s-quote">&ldquo;Arquitectura como forma de transformar sonhos em espa&ccedil;os reais e funcionais.&rdquo;</p>
+      <p id="s-p1">Sou a Marina Carvalho, arquitecta e s&oacute;cio-gerente da Marina Carvalho &ndash; Arquitectura Lda, um gabinete sediado no cora&ccedil;&atilde;o do Montijo.</p>
+      <p id="s-p2">Com uma metodologia pr&oacute;pria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente &eacute; &uacute;nico, e por isso, o nosso servi&ccedil;o tamb&eacute;m o &eacute;.</p>
+      <p id="s-p3">Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto &mdash; &eacute; isso que d&aacute; sentido ao nosso trabalho.</p>
     </div>
     <div class="reveal">
-      <!-- FOTO: quando tiver a imagem, faça upload de "foto-marina.jpg" para a raiz do repositório e descomente a linha abaixo -->
+      <!-- FOTO: faça upload de "foto-marina.jpg" para a raiz do repositório e descomente -->
       <div class="sobre-foto">
         <div class="sobre-foto-ph">
           <span class="sobre-foto-ph-icon">&#128100;</span>
-          <span class="sobre-foto-ph-text" id="s-foto-label">Fotografia · Em breve</span>
+          <span class="sobre-foto-ph-text" id="s-foto-label">Fotografia &middot; Em breve</span>
         </div>
         <!-- <img src="foto-marina.jpg" alt="Marina Carvalho, Arquitecta"> -->
       </div>
       <div class="sobre-cards">
         <div class="sobre-card"><div class="sobre-card-num">100%</div><div class="sobre-card-label" id="c1">Personalizado</div></div>
-        <div class="sobre-card"><div class="sobre-card-num">&#8734;</div><div class="sobre-card-label" id="c2">Dedicação</div></div>
-        <div class="sobre-card"><div class="sobre-card-num" style="font-size:1.6rem;font-style:italic">Montijo</div><div class="sobre-card-label" id="c3">Grande Lisboa · Portugal</div></div>
+        <div class="sobre-card"><div class="sobre-card-num">&#8734;</div><div class="sobre-card-label" id="c2">Dedica&ccedil;&atilde;o</div></div>
+        <div class="sobre-card"><div class="sobre-card-num" style="font-size:1.6rem;font-style:italic">Montijo</div><div class="sobre-card-label" id="c3">Grande Lisboa &middot; Portugal</div></div>
       </div>
     </div>
   </div>
@@ -364,32 +422,32 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
 <!-- SERVIÇOS -->
 <section id="servicos">
   <div class="section-header reveal">
-    <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" id="s2-label">02 — Serviços</span></div>
+    <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" id="s2-label">02 &mdash; Servi&ccedil;os</span></div>
     <h2 class="section-title" id="s2-title">O que <em>fazemos</em><br>por si.</h2>
   </div>
   <div class="servicos-grid">
     <div class="servico-item reveal">
-      <div class="servico-num">01 —</div>
+      <div class="servico-num">01 &mdash;</div>
       <h3 class="servico-title" id="sv1t">Projectos de Arquitectura</h3>
-      <p class="servico-desc" id="sv1d">Desenvolvemos projectos completos e personalizados, desde a análise inicial até à execução, garantindo excelência em cada etapa do processo.</p>
+      <p class="servico-desc" id="sv1d">Desenvolvemos projectos completos e personalizados, desde a an&aacute;lise inicial at&eacute; &agrave; execu&ccedil;&atilde;o, garantindo excel&ecirc;ncia em cada etapa do processo.</p>
       <ul class="servico-sub" id="sv1-list">
-        <li>Estudo Prévio</li><li>Informação Prévia</li><li>Licenciamento</li><li>Comunicação Prévia</li><li>Execução e Acompanhamento</li>
+        <li>Estudo Pr&eacute;vio</li><li>Informa&ccedil;&atilde;o Pr&eacute;via</li><li>Licenciamento</li><li>Comunica&ccedil;&atilde;o Pr&eacute;via</li><li>Execu&ccedil;&atilde;o e Acompanhamento</li>
       </ul>
     </div>
     <div class="servico-item reveal">
-      <div class="servico-num">02 —</div>
+      <div class="servico-num">02 &mdash;</div>
       <h3 class="servico-title" id="sv2t">Consultoria em Arquitectura</h3>
-      <p class="servico-desc" id="sv2d">Analisamos as suas necessidades e fornecemos soluções personalizadas que aliam estética, funcionalidade e sustentabilidade. Orientamos em todas as fases do projecto, desde a concepção inicial até à conclusão.</p>
+      <p class="servico-desc" id="sv2d">Analisamos as suas necessidades e fornecemos solu&ccedil;&otilde;es personalizadas que aliam est&eacute;tica, funcionalidade e sustentabilidade. Orientamos em todas as fases do projecto.</p>
     </div>
     <div class="servico-item reveal">
-      <div class="servico-num">03 —</div>
-      <h3 class="servico-title" id="sv3t">Fiscalização de Obras</h3>
-      <p class="servico-desc" id="sv3d">Monitorizamos todas as fases da construção, assegurando a conformidade com as especificações técnicas e normas legais. Verificamos a qualidade dos materiais e da mão de obra, evitando atrasos e custos desnecessários.</p>
+      <div class="servico-num">03 &mdash;</div>
+      <h3 class="servico-title" id="sv3t">Fiscaliza&ccedil;&atilde;o de Obras</h3>
+      <p class="servico-desc" id="sv3d">Monitorizamos todas as fases da constru&ccedil;&atilde;o, assegurando a conformidade com as especifica&ccedil;&otilde;es t&eacute;cnicas e normas legais. Verificamos a qualidade dos materiais e da m&atilde;o de obra.</p>
     </div>
     <div class="servico-item reveal">
-      <div class="servico-num">04 —</div>
+      <div class="servico-num">04 &mdash;</div>
       <h3 class="servico-title" id="sv4t">Projectos de Especialidades</h3>
-      <p class="servico-desc" id="sv4d">Estruturas, instalações eléctricas, hidráulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global, com soluções eficientes, seguras e de alta qualidade.</p>
+      <p class="servico-desc" id="sv4d">Estruturas, instala&ccedil;&otilde;es el&eacute;ctricas, hidr&aacute;ulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global.</p>
     </div>
   </div>
 </section>
@@ -397,104 +455,87 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-header reveal">
-    <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" id="s3-label">03 — Portfolio</span></div>
+    <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" id="s3-label">03 &mdash; Portfolio</span></div>
     <h2 class="section-title" id="s3-title">Os nossos <em>projectos</em>.</h2>
   </div>
-  <p class="portfolio-intro reveal" id="port-intro">Cada obra conta uma história. Clique nas imagens para ver em detalhe.</p>
-
-  <div class="portfolio-projeto reveal">
-    <div class="portfolio-projeto-header">
-      <span class="portfolio-projeto-num">01 —</span>
-      <h3 class="portfolio-projeto-title" id="p1-title">Moradia Unifamiliar com Piscina</h3>
-      <span class="portfolio-projeto-tag" id="p1-tag">Projecto de Arquitectura · Montijo</span>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-item portfolio-item-main" onclick="openModal('images/casa1/alcado-principal.png','Alçado','Vista Principal')">
-        <img src="images/casa1/alcado-principal.png" alt="Alçado Principal">
-        <div class="portfolio-overlay">
-          <span class="portfolio-item-tag" id="img-alcado">Alçado</span>
-          <div class="portfolio-item-name" id="img-vista">Vista Principal</div>
-        </div>
-      </div>
-      <div class="portfolio-col-right">
-        <div class="portfolio-item" onclick="openModal('images/casa1/logradouro.png','Exterior','Logradouro')">
-          <img src="images/casa1/logradouro.png" alt="Logradouro">
-          <div class="portfolio-overlay"><span class="portfolio-item-tag">Exterior</span><div class="portfolio-item-name" id="img-log">Logradouro</div></div>
-        </div>
-        <div class="portfolio-item" onclick="openModal('images/casa1/logradouro1.png','Exterior','Logradouro — Vista 2')">
-          <img src="images/casa1/logradouro1.png" alt="Logradouro Vista 2">
-          <div class="portfolio-overlay"><span class="portfolio-item-tag">Exterior</span><div class="portfolio-item-name" id="img-log2">Logradouro — Vista 2</div></div>
-        </div>
-        <div class="portfolio-item" onclick="openModal('images/casa1/piscina.png','Exterior','Piscina')">
-          <img src="images/casa1/piscina.png" alt="Piscina">
-          <div class="portfolio-overlay"><span class="portfolio-item-tag">Exterior</span><div class="portfolio-item-name" id="img-pisc">Piscina</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="portfolio-separator"><span class="portfolio-separator-line"></span><span class="portfolio-separator-diamond"></span><span class="portfolio-separator-line"></span></div>
+  <p class="portfolio-intro reveal" id="port-intro">Cada obra conta uma hist&oacute;ria. Clique num projecto para ver a galeria completa.</p>
 
   <!--
-  NOVA CASA — copie este bloco, descomente e adapte:
-  1. Crie images/casa2/ no GitHub e faça upload das fotos
-  2. Ajuste os textos e os src das imagens
-
-  <div class="portfolio-projeto reveal">
-    <div class="portfolio-projeto-header">
-      <span class="portfolio-projeto-num">02 —</span>
-      <h3 class="portfolio-projeto-title">Nome do Projecto</h3>
-      <span class="portfolio-projeto-tag">Tipo · Localização</span>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-item portfolio-item-main" onclick="openModal('images/casa2/foto1.jpg','Tipo','Descrição')">
-        <img src="images/casa2/foto1.jpg" alt="Foto Principal">
-        <div class="portfolio-overlay"><span class="portfolio-item-tag">Tipo</span><div class="portfolio-item-name">Descrição</div></div>
-      </div>
-      <div class="portfolio-col-right">
-        <div class="portfolio-item" onclick="openModal('images/casa2/foto2.jpg','Tipo','Desc')">
-          <img src="images/casa2/foto2.jpg" alt="Foto 2">
-          <div class="portfolio-overlay"><span class="portfolio-item-tag">Tipo</span><div class="portfolio-item-name">Desc</div></div>
-        </div>
-        <div class="portfolio-item" onclick="openModal('images/casa2/foto3.jpg','Tipo','Desc')">
-          <img src="images/casa2/foto3.jpg" alt="Foto 3">
-          <div class="portfolio-overlay"><span class="portfolio-item-tag">Tipo</span><div class="portfolio-item-name">Desc</div></div>
-        </div>
-        <div class="portfolio-item" onclick="openModal('images/casa2/foto4.jpg','Tipo','Desc')">
-          <img src="images/casa2/foto4.jpg" alt="Foto 4">
-          <div class="portfolio-overlay"><span class="portfolio-item-tag">Tipo</span><div class="portfolio-item-name">Desc</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  ══════════════════════════════════════════════════════════════════
+  GRELHA DE PROJECTOS
+  Para adicionar um novo projecto:
+  1. Copie um bloco <div class="project-card"> abaixo
+  2. Altere o onclick com: o nome, a tag, as imagens (array) e os títulos
+  3. Substitua o src da imagem de capa
+  4. Faça upload das imagens para images/casaX/ no GitHub
+  ══════════════════════════════════════════════════════════════════
   -->
+  <div class="projects-grid reveal">
 
-  <div class="portfolio-note reveal">
-    <span class="portfolio-note-icon">i</span>
-    <p id="port-note">Para ver mais trabalhos, visite o nosso <strong><a href="https://www.instagram.com/marinacarvalho.arquitectura" target="_blank" style="color:var(--accent);text-decoration:underline;">Instagram</a></strong>.</p>
+    <!-- CASA 1 -->
+    <div class="project-card" onclick="openGallery(
+      'Moradia Unifamiliar com Piscina',
+      'Projecto de Arquitectura · Montijo',
+      [
+        {src:'images/casa1/alcado-principal.png', caption:'Vista Principal'},
+        {src:'images/casa1/logradouro.png',       caption:'Logradouro'},
+        {src:'images/casa1/logradouro1.png',      caption:'Logradouro — Vista 2'},
+        {src:'images/casa1/piscina.png',          caption:'Piscina'}
+      ]
+    )">
+      <img src="images/casa1/alcado-principal.png" alt="Moradia Unifamiliar com Piscina" loading="lazy">
+      <div class="project-card-overlay">
+        <div class="project-card-tag">Projecto de Arquitectura</div>
+        <div class="project-card-title">Moradia Unifamiliar com Piscina</div>
+        <div class="project-card-count">4 imagens &middot; Montijo</div>
+        <div class="project-card-btn">Ver galeria &rarr;</div>
+      </div>
+    </div>
+
+    <!-- CASA 2 -->
+    <div class="project-card" onclick="openGallery(
+      'Moradia Unifamiliar com Piscina',
+      'Projecto de Arquitectura · Montijo',
+      [
+        {src:'images/casa1/alcado-principal.png', caption:'Vista Principal'},
+        {src:'images/casa1/logradouro.png',       caption:'Logradouro'},
+        {src:'images/casa1/logradouro1.png',      caption:'Logradouro — Vista 2'},
+        {src:'images/casa1/piscina.png',          caption:'Piscina'}
+      ]
+    )">
+      <img src="images/casa1/alcado-principal.png" alt="Moradia Unifamiliar com Piscina" loading="lazy">
+      <div class="project-card-overlay">
+        <div class="project-card-tag">Projecto de Arquitectura</div>
+        <div class="project-card-title">Moradia Unifamiliar com Piscina</div>
+        <div class="project-card-count">4 imagens &middot; Montijo</div>
+        <div class="project-card-btn">Ver galeria &rarr;</div>
+      </div>
+    </div>
+
+
   </div>
 </section>
 
 <!-- CONTACTOS -->
 <section id="contactos">
   <div class="section-header light reveal">
-    <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" id="s4-label">04 — Contacto</span></div>
+    <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" id="s4-label">04 &mdash; Contacto</span></div>
     <h2 class="section-title" id="s4-title">Vamos <em>criar</em><br>algo juntos.</h2>
   </div>
   <div class="contactos-grid">
     <div class="reveal">
-      <p class="contactos-intro" id="cont-intro">Tem um projecto em mente? Estamos prontos para transformar a sua visão em realidade.</p>
+      <p class="contactos-intro" id="cont-intro">Tem um projecto em mente? Estamos prontos para transformar a sua vis&atilde;o em realidade.</p>
       <div class="contact-list">
         <div><div class="contact-entry-label" id="l-email">Email</div><a href="mailto:geral@marinacarvalhoarquitectura.pt" class="contact-entry-value">geral@marinacarvalhoarquitectura.pt</a></div>
         <div><div class="contact-entry-label" id="l-tel">Telefone</div><a href="tel:+351963910427" class="contact-entry-value">+351 963 910 427</a></div>
         <div><div class="contact-entry-label" id="l-morada">Morada</div><span class="contact-entry-value">Travessa dos Quintais 1F<br>2870 Montijo, Portugal</span></div>
-        <div><div class="contact-entry-label" id="l-area">Área de Actuação</div><span class="contact-entry-value" id="area-val">Grande Lisboa e todo o País</span></div>
+        <div><div class="contact-entry-label" id="l-area">&Aacute;rea de Actua&ccedil;&atilde;o</div><span class="contact-entry-value" id="area-val">Grande Lisboa e todo o Pa&iacute;s</span></div>
       </div>
       <div class="contact-map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.5!2d-8.972055!3d38.703406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1939a05e71d50d%3A0xc64caee6d4ccb366!2sTravessa%20dos%20Quintais%201F%2C%202870%20Montijo!5e0!3m2!1spt!2spt!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Marina Carvalho Arquitectura"></iframe>
         <div class="contact-map-label">
-          <span>&#128205; Travessa dos Quintais 1F · Montijo</span>
-          <a href="https://maps.app.goo.gl/drcNqauEcy4TGs2D9" target="_blank" id="map-link">Abrir no Google Maps →</a>
+          <span>&#128205; Travessa dos Quintais 1F &middot; Montijo</span>
+          <a href="https://maps.app.goo.gl/drcNqauEcy4TGs2D9" target="_blank" id="map-link">Abrir no Google Maps &rarr;</a>
         </div>
       </div>
       <div class="social-row">
@@ -514,19 +555,19 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
         <div class="form-group">
           <label id="f-assunto">Tipo de projecto</label>
           <select name="assunto" id="f-select">
-            <option>— Seleccione —</option>
+            <option>&mdash; Seleccione &mdash;</option>
             <option>Projecto de Arquitectura</option>
             <option>Consultoria</option>
-            <option>Fiscalização de Obras</option>
+            <option>Fiscaliza&ccedil;&atilde;o de Obras</option>
             <option>Projectos de Especialidades</option>
             <option>Outro</option>
           </select>
         </div>
-        <div class="form-group"><label id="f-msg">Mensagem *</label><textarea name="mensagem" rows="5" required id="inp-msg" placeholder="Descreva o seu projecto ou questão..."></textarea></div>
+        <div class="form-group"><label id="f-msg">Mensagem *</label><textarea name="mensagem" rows="5" required id="inp-msg" placeholder="Descreva o seu projecto ou quest&atilde;o..."></textarea></div>
         <div class="form-msg success" id="formSuccess">&#10003; Mensagem enviada com sucesso. Entraremos em contacto brevemente.</div>
         <div class="form-msg error" id="formError">&#10007; Ocorreu um erro. Por favor tente novamente ou envie email directamente.</div>
-        <button type="submit" class="btn-primary" id="f-send" style="border:none;cursor:pointer;margin-top:0.5rem;">Enviar mensagem →</button>
-        <p class="form-note" id="f-note">* Campos obrigatórios. Responderemos no prazo de 1–2 dias úteis.</p>
+        <button type="submit" class="btn-primary" id="f-send" style="border:none;cursor:pointer;margin-top:0.5rem;">Enviar mensagem &rarr;</button>
+        <p class="form-note" id="f-note">* Campos obrigat&oacute;rios. Responderemos no prazo de 1&ndash;2 dias &uacute;teis.</p>
       </form>
     </div>
   </div>
@@ -536,7 +577,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
   <div class="footer-brand">Marina Carvalho Arquitectura</div>
   <ul class="footer-links">
     <li><a href="#sobre" id="foot-sobre">Sobre</a></li>
-    <li><a href="#servicos" id="foot-servicos">Serviços</a></li>
+    <li><a href="#servicos" id="foot-servicos">Servi&ccedil;os</a></li>
     <li><a href="#portfolio" id="foot-portfolio">Portfolio</a></li>
     <li><a href="#contactos" id="foot-contacto">Contacto</a></li>
   </ul>
@@ -544,187 +585,274 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
 </footer>
 
 <script>
-var T = {"pt": {"nav_sobre": "Sobre", "nav_servicos": "Serviços", "nav_contacto": "Contacto", "nav_portfolio": "Portfolio", "eyebrow": "Gabinete de Arquitectura · Montijo", "t1": "Arquitectura", "t2": "que transforma", "t3": "sonhos em espaço.", "desc": "Cada projecto é único. Desenvolvemos soluções personalizadas com rigor, criatividade e atenção ao detalhe — do estudo prévio à conclusão da obra.", "btn1": "Iniciar projecto →", "btn2": "Ver portfolio", "sec1_label": "01 — Sobre nós", "sec1_title": "Uma visão <em>diferente</em><br>da arquitectura.", "quote": "&ldquo;Arquitectura como forma de transformar sonhos em espaços reais e funcionais.&rdquo;", "p1": "Sou a Marina Carvalho, arquitecta e sócio-gerente da Marina Carvalho – Arquitectura Lda, um gabinete sediado no coração do Montijo.", "p2": "Com uma metodologia própria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente é único, e por isso, o nosso serviço também o é.", "p3": "Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto — é isso que dá sentido ao nosso trabalho.", "foto_label": "Fotografia · Em breve", "card1": "Personalizado", "card2": "Dedicação", "card3": "Grande Lisboa · Portugal", "sec2_label": "02 — Serviços", "sec2_title": "O que <em>fazemos</em><br>por si.", "s1t": "Projectos de Arquitectura", "s1d": "Desenvolvemos projectos completos e personalizados, desde a análise inicial até à execução, garantindo excelência em cada etapa do processo.", "s1i": ["Estudo Prévio", "Informação Prévia", "Licenciamento", "Comunicação Prévia", "Execução e Acompanhamento"], "s2t": "Consultoria em Arquitectura", "s2d": "Analisamos as suas necessidades e fornecemos soluções personalizadas que aliam estética, funcionalidade e sustentabilidade. Orientamos em todas as fases do projecto, desde a concepção inicial até à conclusão.", "s3t": "Fiscalização de Obras", "s3d": "Monitorizamos todas as fases da construção, assegurando a conformidade com as especificações técnicas e normas legais. Verificamos a qualidade dos materiais e da mão de obra, evitando atrasos e custos desnecessários.", "s4t": "Projectos de Especialidades", "s4d": "Estruturas, instalações eléctricas, hidráulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global, com soluções eficientes, seguras e de alta qualidade.", "sec3_label": "03 — Portfolio", "sec3_title": "Os nossos <em>projectos</em>.", "port_intro": "Cada obra conta uma história. Clique nas imagens para ver em detalhe.", "p1_title": "Moradia Unifamiliar com Piscina", "p1_tag": "Projecto de Arquitectura · Montijo", "img_alcado": "Alçado", "img_vista": "Vista Principal", "img_log": "Logradouro", "img_log2": "Logradouro — Vista 2", "img_pisc": "Piscina", "port_note": "Para ver mais trabalhos, visite o nosso <strong><a href=\"https://www.instagram.com/marinacarvalho.arquitectura\" target=\"_blank\" style=\"color:var(--accent);text-decoration:underline;\">Instagram</a></strong>.", "sec4_label": "04 — Contacto", "sec4_title": "Vamos <em>criar</em><br>algo juntos.", "cont_intro": "Tem um projecto em mente? Estamos prontos para transformar a sua visão em realidade.", "l_email": "Email", "l_tel": "Telefone", "l_morada": "Morada", "l_area": "Área de Actuação", "area_val": "Grande Lisboa e todo o País", "map_link": "Abrir no Google Maps →", "form_title": "Envie-nos uma mensagem", "f_nome": "Nome *", "f_tel": "Telefone", "f_assunto": "Tipo de projecto", "f_msg": "Mensagem *", "ph_nome": "O seu nome", "ph_msg": "Descreva o seu projecto ou questão...", "opts": ["— Seleccione —", "Projecto de Arquitectura", "Consultoria", "Fiscalização de Obras", "Projectos de Especialidades", "Outro"], "f_send": "Enviar mensagem →", "f_sending": "A enviar...", "f_ok": "✓ Mensagem enviada com sucesso. Entraremos em contacto brevemente.", "f_err": "✗ Ocorreu um erro. Por favor tente novamente ou envie email directamente.", "f_note": "* Campos obrigatórios. Responderemos no prazo de 1–2 dias úteis."}, "en": {"nav_sobre": "About", "nav_servicos": "Services", "nav_contacto": "Contact", "nav_portfolio": "Portfolio", "eyebrow": "Architecture Studio · Montijo", "t1": "Architecture", "t2": "that transforms", "t3": "dreams into space.", "desc": "Every project is unique. We develop personalised solutions with rigour, creativity and attention to detail — from the initial brief to project completion.", "btn1": "Start a project →", "btn2": "View portfolio", "sec1_label": "01 — About us", "sec1_title": "A <em>different</em> vision<br>of architecture.", "quote": "&ldquo;Architecture as a way of turning dreams into real, functional spaces.&rdquo;", "p1": "I am Marina Carvalho, architect and managing partner of Marina Carvalho – Arquitectura Lda, a studio based in the heart of Montijo.", "p2": "With a unique methodology and close attention to every detail, we develop precise, personalised projects with soul. Every client is unique, and our service reflects that.", "p3": "Nothing motivates us more than seeing the joy on our clients faces when we deliver a project — that is what gives meaning to our work.", "foto_label": "Photograph · Coming soon", "card1": "Personalised", "card2": "Dedication", "card3": "Greater Lisbon · Portugal", "sec2_label": "02 — Services", "sec2_title": "What we <em>do</em><br>for you.", "s1t": "Architecture Projects", "s1d": "We develop complete, personalised projects from initial analysis through to execution, ensuring excellence at every stage of the process.", "s1i": ["Preliminary Study", "Prior Information", "Planning Permission", "Prior Notification", "Execution & Supervision"], "s2t": "Architecture Consultancy", "s2d": "We analyse your needs and provide personalised solutions that combine aesthetics, functionality and sustainability throughout all project phases.", "s3t": "Construction Supervision", "s3d": "We monitor all phases of construction, ensuring compliance with technical specifications and legal standards, and verifying the quality of materials and workmanship.", "s4t": "Specialist Engineering", "s4d": "Structural, electrical, hydraulic, HVAC and more. Each specialty integrated harmoniously into the overall project, with efficient, safe and high-quality solutions.", "sec3_label": "03 — Portfolio", "sec3_title": "Our <em>projects</em>.", "port_intro": "Every building tells a story. Click the images to view in detail.", "p1_title": "Single-Family House with Pool", "p1_tag": "Architecture Project · Montijo", "img_alcado": "Elevation", "img_vista": "Main View", "img_log": "Garden", "img_log2": "Garden — View 2", "img_pisc": "Swimming Pool", "port_note": "To see more work, visit our <strong><a href=\"https://www.instagram.com/marinacarvalho.arquitectura\" target=\"_blank\" style=\"color:var(--accent);text-decoration:underline;\">Instagram</a></strong>.", "sec4_label": "04 — Contact", "sec4_title": "Let us <em>create</em><br>something together.", "cont_intro": "Have a project in mind? We are ready to turn your vision into reality.", "l_email": "Email", "l_tel": "Phone", "l_morada": "Address", "l_area": "Area of Operation", "area_val": "Greater Lisbon and nationwide", "map_link": "Open in Google Maps →", "form_title": "Send us a message", "f_nome": "Name *", "f_tel": "Phone", "f_assunto": "Project type", "f_msg": "Message *", "ph_nome": "Your name", "ph_msg": "Describe your project or enquiry...", "opts": ["— Select —", "Architecture Project", "Consultancy", "Construction Supervision", "Specialist Engineering", "Other"], "f_send": "Send message →", "f_sending": "Sending...", "f_ok": "✓ Message sent successfully. We will be in touch shortly.", "f_err": "✗ An error occurred. Please try again or email us directly.", "f_note": "* Required fields. We respond within 1–2 working days."}, "es": {"nav_sobre": "Sobre", "nav_servicos": "Servicios", "nav_contacto": "Contacto", "nav_portfolio": "Portfolio", "eyebrow": "Estudio de Arquitectura · Montijo", "t1": "Arquitectura", "t2": "que transforma", "t3": "sueños en espacio.", "desc": "Cada proyecto es único. Desarrollamos soluciones personalizadas con rigor, creatividad y atención al detalle — desde el estudio previo hasta la conclusión de la obra.", "btn1": "Iniciar proyecto →", "btn2": "Ver portfolio", "sec1_label": "01 — Sobre nosotros", "sec1_title": "Una visión <em>diferente</em><br>de la arquitectura.", "quote": "&ldquo;La arquitectura como forma de transformar sueños en espacios reales y funcionales.&rdquo;", "p1": "Soy Marina Carvalho, arquitecta y socia-gerente de Marina Carvalho – Arquitectura Lda, un estudio ubicado en el corazón de Montijo.", "p2": "Con una metodología propia y una atención especial a cada detalle, desarrollamos proyectos precisos, personalizados y con alma. Cada cliente es único, y por eso nuestro servicio también lo es.", "p3": "Nada nos motiva más que ver la alegría en los ojos de nuestros clientes cuando entregamos un proyecto — eso es lo que da sentido a nuestro trabajo.", "foto_label": "Fotografía · Próximamente", "card1": "Personalizado", "card2": "Dedicación", "card3": "Gran Lisboa · Portugal", "sec2_label": "02 — Servicios", "sec2_title": "Lo que <em>hacemos</em><br>por usted.", "s1t": "Proyectos de Arquitectura", "s1d": "Desarrollamos proyectos completos y personalizados, desde el análisis inicial hasta la ejecución, garantizando excelencia en cada etapa del proceso.", "s1i": ["Estudio Previo", "Información Previa", "Licencia de Obras", "Comunicación Previa", "Ejecución y Seguimiento"], "s2t": "Consultoría en Arquitectura", "s2d": "Analizamos sus necesidades y proporcionamos soluciones personalizadas que combinan estética, funcionalidad y sostenibilidad en todas las fases del proyecto.", "s3t": "Supervisión de Obras", "s3d": "Monitorizamos todas las fases de la construcción, asegurando el cumplimiento de las especificaciones técnicas y las normas legales, verificando la calidad de los materiales.", "s4t": "Proyectos de Especialidades", "s4d": "Estructuras, instalaciones eléctricas, hidráulicas, HVAC y mucho más. Cada especialidad integrada armoniosamente en el proyecto global.", "sec3_label": "03 — Portfolio", "sec3_title": "Nuestros <em>proyectos</em>.", "port_intro": "Cada obra cuenta una historia. Haga clic en las imágenes para ver en detalle.", "p1_title": "Vivienda Unifamiliar con Piscina", "p1_tag": "Proyecto de Arquitectura · Montijo", "img_alcado": "Alzado", "img_vista": "Vista Principal", "img_log": "Jardín", "img_log2": "Jardín — Vista 2", "img_pisc": "Piscina", "port_note": "Para ver más trabajos, visita nuestro <strong><a href=\"https://www.instagram.com/marinacarvalho.arquitectura\" target=\"_blank\" style=\"color:var(--accent);text-decoration:underline;\">Instagram</a></strong>.", "sec4_label": "04 — Contacto", "sec4_title": "Vamos a <em>crear</em><br>algo juntos.", "cont_intro": "Tiene un proyecto en mente? Estamos listos para transformar su visión en realidad.", "l_email": "Email", "l_tel": "Teléfono", "l_morada": "Dirección", "l_area": "Área de Actuación", "area_val": "Gran Lisboa y todo el país", "map_link": "Abrir en Google Maps →", "form_title": "Envíenos un mensaje", "f_nome": "Nombre *", "f_tel": "Teléfono", "f_assunto": "Tipo de proyecto", "f_msg": "Mensaje *", "ph_nome": "Su nombre", "ph_msg": "Describa su proyecto o consulta...", "opts": ["— Seleccione —", "Proyecto de Arquitectura", "Consultoría", "Supervisión de Obras", "Proyectos de Especialidades", "Otro"], "f_send": "Enviar mensaje →", "f_sending": "Enviando...", "f_ok": "✓ Mensaje enviado con éxito. Nos pondremos en contacto en breve.", "f_err": "✗ Se produjo un error. Por favor inténtelo de nuevo o envíenos un email directamente.", "f_note": "* Campos obligatorios. Respondemos en un plazo de 1–2 días laborables."}};
+/* ══ TRADUÇÕES ══ */
+var T = {
+  pt:{
+    nav_sobre:'Sobre', nav_servicos:'Serviços', nav_contacto:'Contacto', nav_portfolio:'Portfolio',
+    eyebrow:'Gabinete de Arquitectura · Montijo',
+    t1:'Arquitectura', t2:'que transforma', t3:'sonhos em espaço.',
+    desc:'Cada projecto é único. Desenvolvemos soluções personalizadas com rigor, criatividade e atenção ao detalhe — do estudo prévio à conclusão da obra.',
+    btn1:'Iniciar projecto →', btn2:'Ver portfolio',
+    s1l:'01 — Sobre nós', s1t:'Uma visão <em>diferente</em><br>da arquitectura.',
+    quote:'“Arquitectura como forma de transformar sonhos em espaços reais e funcionais.”',
+    p1:'Sou a Marina Carvalho, arquitecta e sócio-gerente da Marina Carvalho – Arquitectura Lda, um gabinete sediado no coração do Montijo.',
+    p2:'Com uma metodologia própria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente é único, e por isso, o nosso serviço também o é.',
+    p3:'Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto — é isso que dá sentido ao nosso trabalho.',
+    foto_l:'Fotografia · Em breve',
+    c1:'Personalizado', c2:'Dedicação', c3:'Grande Lisboa · Portugal',
+    s2l:'02 — Serviços', s2t:'O que <em>fazemos</em><br>por si.',
+    sv1t:'Projectos de Arquitectura',
+    sv1d:'Desenvolvemos projectos completos e personalizados, desde a análise inicial até à execução, garantindo excelência em cada etapa do processo.',
+    sv1i:['Estudo Prévio','Informação Prévia','Licenciamento','Comunicação Prévia','Execução e Acompanhamento'],
+    sv2t:'Consultoria em Arquitectura',
+    sv2d:'Analisamos as suas necessidades e fornecemos soluções personalizadas que aliam estética, funcionalidade e sustentabilidade. Orientamos em todas as fases do projecto.',
+    sv3t:'Fiscalização de Obras',
+    sv3d:'Monitorizamos todas as fases da construção, assegurando a conformidade com as especificações técnicas e normas legais. Verificamos a qualidade dos materiais e da mão de obra.',
+    sv4t:'Projectos de Especialidades',
+    sv4d:'Estruturas, instalações eléctricas, hidráulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global.',
+    s3l:'03 — Portfolio', s3t:'Os nossos <em>projectos</em>.',
+    port_intro:'Cada obra conta uma história. Clique num projecto para ver a galeria completa.',
+    s4l:'04 — Contacto', s4t:'Vamos <em>criar</em><br>algo juntos.',
+    cont_intro:'Tem um projecto em mente? Estamos prontos para transformar a sua visão em realidade.',
+    l_email:'Email', l_tel:'Telefone', l_morada:'Morada', l_area:'Área de Actuação',
+    area_val:'Grande Lisboa e todo o País',
+    map_link:'Abrir no Google Maps →',
+    form_t:'Envie-nos uma mensagem',
+    f_nome:'Nome *', f_tel:'Telefone', f_assunto:'Tipo de projecto', f_msg:'Mensagem *',
+    ph_nome:'O seu nome', ph_msg:'Descreva o seu projecto ou questão...',
+    opts:['— Seleccione —','Projecto de Arquitectura','Consultoria','Fiscalização de Obras','Projectos de Especialidades','Outro'],
+    f_send:'Enviar mensagem →', f_sending:'A enviar...',
+    f_ok:'✓ Mensagem enviada com sucesso. Entraremos em contacto brevemente.',
+    f_err:'✗ Ocorreu um erro. Por favor tente novamente ou envie email directamente.',
+    f_note:'* Campos obrigatórios. Responderemos no prazo de 1–2 dias úteis.'
+  },
+  en:{
+    nav_sobre:'About', nav_servicos:'Services', nav_contacto:'Contact', nav_portfolio:'Portfolio',
+    eyebrow:'Architecture Studio · Montijo',
+    t1:'Architecture', t2:'that transforms', t3:'dreams into space.',
+    desc:'Every project is unique. We develop personalised solutions with rigour, creativity and attention to detail — from the initial brief to project completion.',
+    btn1:'Start a project →', btn2:'View portfolio',
+    s1l:'01 — About us', s1t:'A <em>different</em> vision<br>of architecture.',
+    quote:'“Architecture as a way of turning dreams into real, functional spaces.”',
+    p1:'I am Marina Carvalho, architect and managing partner of Marina Carvalho – Arquitectura Lda, a studio based in the heart of Montijo.',
+    p2:'With a unique methodology and close attention to every detail, we develop precise, personalised projects with soul. Every client is unique, and our service reflects that.',
+    p3:'Nothing motivates us more than seeing the joy on our clients faces when we deliver a project — that is what gives meaning to our work.',
+    foto_l:'Photograph · Coming soon',
+    c1:'Personalised', c2:'Dedication', c3:'Greater Lisbon · Portugal',
+    s2l:'02 — Services', s2t:'What we <em>do</em><br>for you.',
+    sv1t:'Architecture Projects',
+    sv1d:'We develop complete, personalised projects from initial analysis through to execution, ensuring excellence at every stage of the process.',
+    sv1i:['Preliminary Study','Prior Information','Planning Permission','Prior Notification','Execution & Supervision'],
+    sv2t:'Architecture Consultancy',
+    sv2d:'We analyse your needs and provide personalised solutions combining aesthetics, functionality and sustainability throughout all project phases.',
+    sv3t:'Construction Supervision',
+    sv3d:'We monitor all phases of construction, ensuring compliance with technical specifications and legal standards, and verifying the quality of materials and workmanship.',
+    sv4t:'Specialist Engineering',
+    sv4d:'Structural, electrical, hydraulic, HVAC and more. Each specialty integrated harmoniously into the overall project.',
+    s3l:'03 — Portfolio', s3t:'Our <em>projects</em>.',
+    port_intro:'Every building tells a story. Click a project to view the full gallery.',
+    s4l:'04 — Contact', s4t:'Let us <em>create</em><br>something together.',
+    cont_intro:'Have a project in mind? We are ready to turn your vision into reality.',
+    l_email:'Email', l_tel:'Phone', l_morada:'Address', l_area:'Area of Operation',
+    area_val:'Greater Lisbon and nationwide',
+    map_link:'Open in Google Maps →',
+    form_t:'Send us a message',
+    f_nome:'Name *', f_tel:'Phone', f_assunto:'Project type', f_msg:'Message *',
+    ph_nome:'Your name', ph_msg:'Describe your project or enquiry...',
+    opts:['— Select —','Architecture Project','Consultancy','Construction Supervision','Specialist Engineering','Other'],
+    f_send:'Send message →', f_sending:'Sending...',
+    f_ok:'✓ Message sent successfully. We will be in touch shortly.',
+    f_err:'✗ An error occurred. Please try again or email us directly.',
+    f_note:'* Required fields. We respond within 1–2 working days.'
+  },
+  es:{
+    nav_sobre:'Sobre', nav_servicos:'Servicios', nav_contacto:'Contacto', nav_portfolio:'Portfolio',
+    eyebrow:'Estudio de Arquitectura · Montijo',
+    t1:'Arquitectura', t2:'que transforma', t3:'sueños en espacio.',
+    desc:'Cada proyecto es único. Desarrollamos soluciones personalizadas con rigor, creatividad y atención al detalle — desde el estudio previo hasta la conclusión de la obra.',
+    btn1:'Iniciar proyecto →', btn2:'Ver portfolio',
+    s1l:'01 — Sobre nosotros', s1t:'Una visión <em>diferente</em><br>de la arquitectura.',
+    quote:'“La arquitectura como forma de transformar sueños en espacios reales y funcionales.”',
+    p1:'Soy Marina Carvalho, arquitecta y socia-gerente de Marina Carvalho – Arquitectura Lda, un estudio ubicado en el corazón de Montijo.',
+    p2:'Con una metodología propia y una atención especial a cada detalle, desarrollamos proyectos precisos, personalizados y con alma. Cada cliente es único, y por eso nuestro servicio también lo es.',
+    p3:'Nada nos motiva más que ver la alegría en los ojos de nuestros clientes cuando entregamos un proyecto — eso es lo que da sentido a nuestro trabajo.',
+    foto_l:'Fotografía · Próximamente',
+    c1:'Personalizado', c2:'Dedicación', c3:'Gran Lisboa · Portugal',
+    s2l:'02 — Servicios', s2t:'Lo que <em>hacemos</em><br>por usted.',
+    sv1t:'Proyectos de Arquitectura',
+    sv1d:'Desarrollamos proyectos completos y personalizados, desde el análisis inicial hasta la ejecución, garantizando excelencia en cada etapa del proceso.',
+    sv1i:['Estudio Previo','Información Previa','Licencia de Obras','Comunicación Previa','Ejecución y Seguimiento'],
+    sv2t:'Consultoría en Arquitectura',
+    sv2d:'Analizamos sus necesidades y proporcionamos soluciones personalizadas que combinan estética, funcionalidad y sostenibilidad en todas las fases del proyecto.',
+    sv3t:'Supervisión de Obras',
+    sv3d:'Monitorizamos todas las fases de la construcción, asegurando el cumplimiento de las especificaciones técnicas y las normas legales, verificando la calidad de los materiales.',
+    sv4t:'Proyectos de Especialidades',
+    sv4d:'Estructuras, instalaciones eléctricas, hidráulicas, HVAC y mucho más. Cada especialidad integrada armoniosamente en el proyecto global.',
+    s3l:'03 — Portfolio', s3t:'Nuestros <em>proyectos</em>.',
+    port_intro:'Cada obra cuenta una historia. Haga clic en un proyecto para ver la galería completa.',
+    s4l:'04 — Contacto', s4t:'Vamos a <em>crear</em><br>algo juntos.',
+    cont_intro:'Tiene un proyecto en mente? Estamos listos para transformar su visión en realidad.',
+    l_email:'Email', l_tel:'Teléfono', l_morada:'Dirección', l_area:'Área de Actuación',
+    area_val:'Gran Lisboa y todo el país',
+    map_link:'Abrir en Google Maps →',
+    form_t:'Envínos un mensaje',
+    f_nome:'Nombre *', f_tel:'Teléfono', f_assunto:'Tipo de proyecto', f_msg:'Mensaje *',
+    ph_nome:'Su nombre', ph_msg:'Describa su proyecto o consulta...',
+    opts:['— Seleccione —','Proyecto de Arquitectura','Consultoría','Supervisión de Obras','Proyectos de Especialidades','Otro'],
+    f_send:'Enviar mensaje →', f_sending:'Enviando...',
+    f_ok:'✓ Mensaje enviado con éxito. Nos pondremos en contacto en breve.',
+    f_err:'✗ Se produjo un error. Por favor inténtelo de nuevo o envínos un email directamente.',
+    f_note:'* Campos obligatorios. Respondemos en un plazo de 1–2 días laborables.'
+  }
+};
+
 var lang = 'pt';
 
 function setLang(l) {
   lang = l;
   var t = T[l];
   document.documentElement.lang = l;
-
-  // lang bar buttons
-  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
-  var btns = document.querySelectorAll('.lang-btn');
-  var idx = l === 'pt' ? 0 : l === 'en' ? 1 : 2;
-  btns[idx].classList.add('active');
-
-  // nav
-  setText('nav-sobre', t.nav_sobre);
-  setText('nav-servicos', t.nav_servicos);
-  setText('nav-contacto', t.nav_contacto);
-  setText('nav-portfolio', t.nav_portfolio);
-  setText('mob-sobre', t.nav_sobre);
-  setText('mob-servicos', t.nav_servicos);
-  setText('mob-contacto', t.nav_contacto);
-  setText('mob-portfolio', t.nav_portfolio);
-  setText('foot-sobre', t.nav_sobre);
-  setText('foot-servicos', t.nav_servicos);
-  setText('foot-contacto', t.nav_contacto);
-  setText('foot-portfolio', t.nav_portfolio);
-
-  // hero
-  setText('h-eyebrow', t.eyebrow);
-  setText('h-t1', t.t1);
-  setText('h-t2', t.t2);
-  setText('h-t3', t.t3);
-  setText('h-desc', t.desc);
-  setText('h-btn1', t.btn1);
-  setText('h-btn2', t.btn2);
-
-  // sobre
-  setText('s1-label', t.sec1_label);
-  setHTML('s1-title', t.sec1_title);
-  setHTML('s-quote', t.quote);
-  setText('s-p1', t.p1);
-  setText('s-p2', t.p2);
-  setText('s-p3', t.p3);
-  setText('s-foto-label', t.foto_label);
-  setText('c1', t.card1);
-  setText('c2', t.card2);
-  setText('c3', t.card3);
-
-  // servicos
-  setText('s2-label', t.sec2_label);
-  setHTML('s2-title', t.sec2_title);
-  setText('sv1t', t.s1t); setText('sv1d', t.s1d);
-  setText('sv2t', t.s2t); setText('sv2d', t.s2d);
-  setText('sv3t', t.s3t); setText('sv3d', t.s3d);
-  setText('sv4t', t.s4t); setText('sv4d', t.s4d);
-  // lista servico 1
-  var li = document.querySelectorAll('#sv1-list li');
-  t.s1i.forEach(function(v, i) { if (li[i]) li[i].textContent = v; });
-
-  // portfolio
-  setText('s3-label', t.sec3_label);
-  setHTML('s3-title', t.sec3_title);
-  setText('port-intro', t.port_intro);
-  setText('p1-title', t.p1_title);
-  setText('p1-tag', t.p1_tag);
-  setText('img-alcado', t.img_alcado);
-  setText('img-vista', t.img_vista);
-  setText('img-log', t.img_log);
-  setText('img-log2', t.img_log2);
-  setText('img-pisc', t.img_pisc);
-  setHTML('port-note', t.port_note);
-
-  // contactos
-  setText('s4-label', t.sec4_label);
-  setHTML('s4-title', t.sec4_title);
-  setText('cont-intro', t.cont_intro);
-  setText('l-email', t.l_email);
-  setText('l-tel', t.l_tel);
-  setText('l-morada', t.l_morada);
-  setText('l-area', t.l_area);
-  setText('area-val', t.area_val);
-  setText('map-link', t.map_link);
-  setText('form-title', t.form_title);
-  setText('f-nome', t.f_nome);
-  setText('f-tel', t.f_tel);
-  setText('f-assunto', t.f_assunto);
-  setText('f-msg', t.f_msg);
-  setText('f-send', t.f_send);
-  setText('f-note', t.f_note);
-  // placeholders
-  setPlaceholder('inp-nome', t.ph_nome);
-  setPlaceholder('inp-msg', t.ph_msg);
-  // select options
-  var opts = document.querySelectorAll('#f-select option');
-  t.opts.forEach(function(v, i) { if (opts[i]) opts[i].textContent = v; });
-  // form messages
-  setText('formSuccess', t.f_ok);
-  setText('formError', t.f_err);
+  document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.remove('active'); });
+  var idx = l==='pt'?0:l==='en'?1:2;
+  document.querySelectorAll('.lang-btn')[idx].classList.add('active');
+  function tx(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+  function th(id,v){ var e=document.getElementById(id); if(e) e.innerHTML=v; }
+  function tp(id,v){ var e=document.getElementById(id); if(e) e.placeholder=v; }
+  tx('nav-sobre',t.nav_sobre); tx('nav-servicos',t.nav_servicos);
+  tx('nav-contacto',t.nav_contacto); tx('nav-portfolio',t.nav_portfolio);
+  tx('mob-sobre',t.nav_sobre); tx('mob-servicos',t.nav_servicos);
+  tx('mob-contacto',t.nav_contacto); tx('mob-portfolio',t.nav_portfolio);
+  tx('foot-sobre',t.nav_sobre); tx('foot-servicos',t.nav_servicos);
+  tx('foot-contacto',t.nav_contacto); tx('foot-portfolio',t.nav_portfolio);
+  tx('h-eyebrow',t.eyebrow); tx('h-t1',t.t1); tx('h-t2',t.t2); tx('h-t3',t.t3);
+  tx('h-desc',t.desc); tx('h-btn1',t.btn1); tx('h-btn2',t.btn2);
+  tx('s1-label',t.s1l); th('s1-title',t.s1t);
+  th('s-quote',t.quote);
+  tx('s-p1',t.p1); tx('s-p2',t.p2); tx('s-p3',t.p3);
+  tx('s-foto-label',t.foto_l);
+  tx('c1',t.c1); tx('c2',t.c2); tx('c3',t.c3);
+  tx('s2-label',t.s2l); th('s2-title',t.s2t);
+  tx('sv1t',t.sv1t); tx('sv1d',t.sv1d);
+  tx('sv2t',t.sv2t); tx('sv2d',t.sv2d);
+  tx('sv3t',t.sv3t); tx('sv3d',t.sv3d);
+  tx('sv4t',t.sv4t); tx('sv4d',t.sv4d);
+  var li=document.querySelectorAll('#sv1-list li');
+  t.sv1i.forEach(function(v,i){ if(li[i]) li[i].textContent=v; });
+  tx('s3-label',t.s3l); th('s3-title',t.s3t);
+  tx('port-intro',t.port_intro);
+  tx('s4-label',t.s4l); th('s4-title',t.s4t);
+  tx('cont-intro',t.cont_intro);
+  tx('l-email',t.l_email); tx('l-tel',t.l_tel);
+  tx('l-morada',t.l_morada); tx('l-area',t.l_area);
+  tx('area-val',t.area_val); tx('map-link',t.map_link);
+  tx('form-title',t.form_t);
+  tx('f-nome',t.f_nome); tx('f-tel',t.f_tel);
+  tx('f-assunto',t.f_assunto); tx('f-msg',t.f_msg);
+  tx('f-send',t.f_send); tx('f-note',t.f_note);
+  tp('inp-nome',t.ph_nome); tp('inp-msg',t.ph_msg);
+  var opts=document.querySelectorAll('#f-select option');
+  t.opts.forEach(function(v,i){ if(opts[i]) opts[i].textContent=v; });
+  tx('formSuccess',t.f_ok); tx('formError',t.f_err);
 }
 
-function setText(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
-function setHTML(id, val) { var el = document.getElementById(id); if (el) el.innerHTML = val; }
-function setPlaceholder(id, val) { var el = document.getElementById(id); if (el) el.placeholder = val; }
+/* ══ GALERIA ══ */
+var galImages = [];
+var galIdx = 0;
 
-// MODAL
-function openModal(src, tag, title) {
-  document.getElementById('modalImg').src = src;
-  document.getElementById('modalTag').textContent = tag;
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('imageModal').classList.add('open');
+function openGallery(title, subtitle, images) {
+  galImages = images;
+  galIdx = 0;
+  document.getElementById('gal-title').textContent = title;
+  document.getElementById('gal-subtitle').textContent = subtitle;
+  renderGallery();
+  document.getElementById('galleryModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeModal() {
-  document.getElementById('imageModal').classList.remove('open');
+
+function renderGallery() {
+  var img = galImages[galIdx];
+  document.getElementById('gal-main-img').src = img.src;
+  document.getElementById('gal-main-img').alt = img.caption;
+  document.getElementById('gal-counter').textContent = (galIdx+1) + ' / ' + galImages.length;
+  var tb = document.getElementById('gal-thumbs');
+  tb.innerHTML = '';
+  galImages.forEach(function(im, i) {
+    var t = document.createElement('img');
+    t.src = im.src; t.alt = im.caption;
+    t.className = 'gallery-thumb' + (i===galIdx?' active':'');
+    t.onclick = function(){ galIdx=i; renderGallery(); };
+    tb.appendChild(t);
+  });
+  // scroll active thumb into view
+  var active = tb.querySelector('.active');
+  if(active) active.scrollIntoView({block:'nearest',inline:'center'});
+}
+
+function galPrev() { galIdx = (galIdx-1+galImages.length)%galImages.length; renderGallery(); }
+function galNext() { galIdx = (galIdx+1)%galImages.length; renderGallery(); }
+
+function closeGallery() {
+  document.getElementById('galleryModal').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.getElementById('imageModal').addEventListener('click', function(e) {
-  if (e.target.id === 'imageModal') closeModal();
+
+document.addEventListener('keydown', function(e) {
+  var m = document.getElementById('galleryModal');
+  if(!m.classList.contains('open')) return;
+  if(e.key==='Escape') closeGallery();
+  if(e.key==='ArrowLeft') galPrev();
+  if(e.key==='ArrowRight') galNext();
 });
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-// NAVBAR
+/* ══ NAVBAR ══ */
 var navbar = document.getElementById('navbar');
-window.addEventListener('scroll', function() { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY>60); });
 
-// HAMBURGER
+/* ══ HAMBURGER ══ */
 var hamburger = document.getElementById('hamburger');
 var mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', function() {
+hamburger.addEventListener('click', function(){
   hamburger.classList.toggle('open');
   mobileMenu.classList.toggle('open');
-  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  document.body.style.overflow = mobileMenu.classList.contains('open')?'hidden':'';
 });
-function closeMobile() {
+function closeMobile(){
   hamburger.classList.remove('open');
   mobileMenu.classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
 }
 
-// SCROLL REVEAL
+/* ══ SCROLL REVEAL ══ */
 var reveals = document.querySelectorAll('.reveal');
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry, i) {
-    if (entry.isIntersecting) {
-      setTimeout(function() { entry.target.classList.add('visible'); }, i * 90);
-      observer.unobserve(entry.target);
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry,i){
+    if(entry.isIntersecting){
+      setTimeout(function(){ entry.target.classList.add('visible'); }, i*90);
+      obs.unobserve(entry.target);
     }
   });
-}, { threshold: 0.06, rootMargin: '0px 0px -50px 0px' });
-reveals.forEach(function(el) { observer.observe(el); });
+},{threshold:0.06,rootMargin:'0px 0px -50px 0px'});
+reveals.forEach(function(el){ obs.observe(el); });
 
-// FORMULÁRIO AJAX
+/* ══ FORMULÁRIO ══ */
 var form = document.getElementById('contactForm');
-var successMsg = document.getElementById('formSuccess');
-var errorMsg = document.getElementById('formError');
-if (form) {
-  form.addEventListener('submit', function(e) {
+if(form){
+  form.addEventListener('submit', function(e){
     e.preventDefault();
-    successMsg.style.display = 'none';
-    errorMsg.style.display = 'none';
+    var ok = document.getElementById('formSuccess');
+    var err = document.getElementById('formError');
+    ok.style.display='none'; err.style.display='none';
     var btn = document.getElementById('f-send');
     var orig = btn.textContent;
     btn.textContent = T[lang].f_sending;
     btn.disabled = true;
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(res) {
-      if (res.ok) {
-        form.reset();
-        successMsg.style.display = 'block';
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      } else { throw new Error(); }
-    }).catch(function() {
-      errorMsg.style.display = 'block';
-    }).finally(function() {
-      btn.textContent = orig;
-      btn.disabled = false;
-    });
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(r){
+        if(r.ok){ form.reset(); ok.style.display='block'; ok.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+        else { throw new Error(); }
+      })
+      .catch(function(){ err.style.display='block'; })
+      .finally(function(){ btn.textContent=orig; btn.disabled=false; });
   });
 }
 </script>
