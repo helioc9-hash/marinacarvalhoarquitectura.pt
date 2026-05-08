@@ -89,6 +89,62 @@ nav.scrolled{padding:0.6rem 5rem;box-shadow:0 4px 40px rgba(28,26,23,0.07)}
 .gallery-thumb{width:80px;height:60px;object-fit:cover;cursor:pointer;opacity:0.45;border:1px solid transparent;transition:opacity 0.2s,border-color 0.2s;flex-shrink:0}
 .gallery-thumb.active{opacity:1;border-color:var(--accent)}
 .gallery-thumb:hover{opacity:0.8}
+.gallery-thumb-wrap{width:80px;height:60px;flex-shrink:0;cursor:pointer;opacity:0.45;border:1px solid transparent;transition:opacity 0.2s,border-color 0.2s;overflow:hidden}
+.gallery-thumb-wrap.active{opacity:1;border-color:var(--accent)}
+.gallery-thumb-wrap:hover{opacity:0.8}
+
+/* ── MELHORIAS VISUAIS ── */
+
+/* Contador de projectos no portfolio */
+.portfolio-stats {
+  display: flex; gap: 3rem; margin-bottom: 4rem; margin-top: -2rem;
+}
+.portfolio-stat-num {
+  font-family: var(--serif); font-size: 2.5rem; font-weight: 300;
+  color: var(--accent); line-height: 1;
+}
+.portfolio-stat-label {
+  font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--stone); margin-top: 0.3rem;
+}
+
+/* Botão "voltar ao topo" */
+.back-to-top {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 400;
+  width: 42px; height: 42px;
+  background: var(--warm-dark); border: 1px solid rgba(196,168,130,0.25);
+  color: var(--accent); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, background 0.2s;
+}
+.back-to-top.visible { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { background: var(--accent); color: var(--warm-dark); }
+
+/* Pulse no telefone */
+a[href^="tel"] {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+a[href^="tel"]::before {
+  content: '📞'; font-size: 0.8rem;
+}
+
+/* Legenda da imagem na galeria */
+.gallery-caption {
+  position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
+  font-family: var(--serif); font-style: italic; font-size: 0.9rem;
+  color: rgba(245,240,232,0.5); white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Filtro hover nos cartões mais suave */
+.project-card::after {
+  content: ''; position: absolute; inset: 0;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  pointer-events: none;
+}
+.project-card:hover::after { border-color: var(--accent); }
 
 /* ── HERO ── */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding-top:29px}
@@ -319,11 +375,15 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
   <div class="gallery-main">
     <button class="gallery-arrow gallery-arrow-left" onclick="galPrev()" aria-label="Anterior">&#8592;</button>
     <img id="gal-main-img" src="" alt="Imagem do projecto">
+    <div class="gallery-caption" id="gal-caption"></div>
     <button class="gallery-arrow gallery-arrow-right" onclick="galNext()" aria-label="Seguinte">&#8594;</button>
     <div class="gallery-img-counter" id="gal-counter">1 / 1</div>
   </div>
   <div class="gallery-thumbs" id="gal-thumbs"></div>
 </div>
+
+<!-- VOLTAR AO TOPO -->
+<button class="back-to-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">&#8593;</button>
 
 <!-- LANG BAR -->
 <div class="lang-bar">
@@ -460,6 +520,17 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
   </div>
   <p class="portfolio-intro reveal" id="port-intro">Cada obra conta uma hist&oacute;ria. Clique num projecto para ver a galeria completa.</p>
 
+  <div class="portfolio-stats reveal">
+    <div>
+      <div class="portfolio-stat-num">6</div>
+      <div class="portfolio-stat-label">Projectos</div>
+    </div>
+    <div>
+      <div class="portfolio-stat-num">58+</div>
+      <div class="portfolio-stat-label">Imagens</div>
+    </div>
+  </div>
+
   <!--
   ══════════════════════════════════════════════════════════════════
   GRELHA DE PROJECTOS
@@ -495,7 +566,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- EDIFÍCIO SALDANHA -->
     <div class="project-card" onclick="openGallery(
       'Edif\u00edcio Saldanha',
-      'Projecto de Arquitectura \Montijo',
+      'Projecto de Arquitectura \u00b7 Lisboa',
       [
         {src:'images/Edificio_Saldanha/Alcado_frontal.jpeg',   caption:'Al\u00e7ado Frontal'},
         {src:'images/Edificio_Saldanha/Alcado_lateral.jpeg',   caption:'Al\u00e7ado Lateral'},
@@ -530,7 +601,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- GUESTHOUSE -->
     <div class="project-card" onclick="openGallery(
       'Guesthouse',
-      'Projecto de Arquitectura \Montijo', 
+      'Projecto de Arquitectura',
       [
         {src:'images/guesthouse/Alcado.jpeg',                  caption:'Al\u00e7ado'},
         {src:'images/guesthouse/Alcado-noite.jpeg',            caption:'Al\u00e7ado Nocturno'},
@@ -552,17 +623,17 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- MORADIA JD -->
     <div class="project-card" onclick="openGallery(
       'Moradia JD',
-      'Projecto de Arquitectura \Montijo',
+      'Projecto de Arquitectura',
       [
-        {src:'images/moradia JD/alcado.jpeg',          caption:'Al\u00e7ado'},
-        {src:'images/moradia JD/alcado_lateral.jpeg',  caption:'Al\u00e7ado Lateral'},
-        {src:'images/moradia JD/alcado_posterior.jpeg',caption:'Al\u00e7ado Posterior'},
-        {src:'images/moradia JD/Logradouro.jpeg',      caption:'Logradouro'},
-        {src:'images/moradia JD/Logradouro_1.jpeg',    caption:'Logradouro 2'},
-        {src:'images/moradia JD/parqueamento.jpeg',    caption:'Parqueamento'}
+        {src:'images/moradia%20JD/alcado.jpeg',           caption:'Al\u00e7ado'},
+        {src:'images/moradia%20JD/alcado_lateral.jpeg',   caption:'Al\u00e7ado Lateral'},
+        {src:'images/moradia%20JD/alcado_posterior.jpeg', caption:'Al\u00e7ado Posterior'},
+        {src:'images/moradia%20JD/Logradouro.jpeg',       caption:'Logradouro'},
+        {src:'images/moradia%20JD/Logradouro_1.jpeg',     caption:'Logradouro 2'},
+        {src:'images/moradia%20JD/parqueamento.jpeg',     caption:'Parqueamento'}
       ]
     )">
-      <img src="images/moradia JD/alcado.jpeg" alt="Moradia JD" loading="lazy">
+      <img src="images/moradia%20JD/alcado.jpeg" alt="Moradia JD" loading="lazy">
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Moradia JD</div>
@@ -574,23 +645,23 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- MORADIA JR -->
     <div class="project-card" onclick="openGallery(
       'Moradia JR',
-      'Projecto de Arquitectura \Palmela',
+      'Projecto de Arquitectura',
       [
-        {src:'images/moradia JR/Alcado_frontal.jpeg',      caption:'Al\u00e7ado Frontal'},
-        {src:'images/moradia JR/Alcado_lateral.jpeg',      caption:'Al\u00e7ado Lateral'},
-        {src:'images/moradia JR/Alcado_lateral_esq.jpeg',  caption:'Al\u00e7ado Lateral Esq.'},
-        {src:'images/moradia JR/Alcado_superior.jpeg',     caption:'Al\u00e7ado Superior'},
-        {src:'images/moradia JR/Entrada.jpeg',             caption:'Entrada'},
-        {src:'images/moradia JR/logradouro.jpeg',          caption:'Logradouro'},
-        {src:'images/moradia JR/Logradouro_1.jpeg',        caption:'Logradouro 2'},
-        {src:'images/moradia JR/Piscina.jpeg',             caption:'Piscina'},
-        {src:'images/moradia JR/Planta.jpeg',              caption:'Planta'},
-        {src:'images/moradia JR/Zona de Lazer.jpeg',       caption:'Zona de Lazer'},
-        {src:'images/moradia JR/Zona Lazer_1.jpeg',        caption:'Zona de Lazer 2'},
-        {src:'images/moradia JR/Zona Parqueamento.jpeg',   caption:'Zona de Parqueamento'}
+        {src:'images/moradia%20JR/Alcado_frontal.jpeg',      caption:'Al\u00e7ado Frontal'},
+        {src:'images/moradia%20JR/Alcado_lateral.jpeg',      caption:'Al\u00e7ado Lateral'},
+        {src:'images/moradia%20JR/Alcado_lateral_esq.jpeg',  caption:'Al\u00e7ado Lateral Esq.'},
+        {src:'images/moradia%20JR/Alcado_superior.jpeg',     caption:'Al\u00e7ado Superior'},
+        {src:'images/moradia%20JR/Entrada.jpeg',             caption:'Entrada'},
+        {src:'images/moradia%20JR/logradouro.jpeg',          caption:'Logradouro'},
+        {src:'images/moradia%20JR/Logradouro_1.jpeg',        caption:'Logradouro 2'},
+        {src:'images/moradia%20JR/Piscina.jpeg',             caption:'Piscina'},
+        {src:'images/moradia%20JR/Planta.jpeg',              caption:'Planta'},
+        {src:'images/moradia%20JR/Zona%20de%20Lazer.jpeg',   caption:'Zona de Lazer'},
+        {src:'images/moradia%20JR/Zona%20Lazer_1.jpeg',      caption:'Zona de Lazer 2'},
+        {src:'images/moradia%20JR/Zona%20Parqueamento.jpeg', caption:'Zona de Parqueamento'}
       ]
     )">
-      <img src="images/moradia JR/Alcado_frontal.jpeg" alt="Moradia JR" loading="lazy">
+      <img src="images/moradia%20JR/Alcado_frontal.jpeg" alt="Moradia JR" loading="lazy">
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Moradia JR</div>
@@ -602,25 +673,25 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- MORADIA RC -->
     <div class="project-card" onclick="openGallery(
       'Moradia RC',
-      'Projecto de Arquitectura \Montijo',
+      'Projecto de Arquitectura',
       [
-        {src:'images/moradia RC/alcado.jpeg',          caption:'Al\u00e7ado'},
-        {src:'images/moradia RC/alcado1.jpeg',         caption:'Al\u00e7ado 2'},
-        {src:'images/moradia RC/alcado2.jpeg',         caption:'Al\u00e7ado 3'},
-        {src:'images/moradia RC/aerea.jpeg',           caption:'Vista A\u00e9rea'},
-        {src:'images/moradia RC/Logradouro.jpeg',      caption:'Logradouro'},
-        {src:'images/moradia RC/Logradouro1.jpeg',     caption:'Logradouro 2'},
-        {src:'images/moradia RC/Piscina.jpeg',         caption:'Piscina'},
-        {src:'images/moradia RC/anexo.jpeg',           caption:'Anexo'},
-        {src:'images/moradia RC/anexo_interior.jpeg',  caption:'Anexo Interior'}
+        {src:'images/moradia%20RC/alcado.jpeg',         caption:'Al\u00e7ado'},
+        {src:'images/moradia%20RC/alcado1.jpeg',        caption:'Al\u00e7ado 2'},
+        {src:'images/moradia%20RC/alcado2.jpeg',        caption:'Al\u00e7ado 3'},
+        {src:'images/moradia%20RC/aerea.jpeg',          caption:'Vista A\u00e9rea'},
+        {src:'images/moradia%20RC/Logradouro.jpeg',     caption:'Logradouro'},
+        {src:'images/moradia%20RC/Logradouro1.jpeg',    caption:'Logradouro 2'},
+        {src:'images/moradia%20RC/Piscina.jpeg',        caption:'Piscina'},
+        {src:'images/moradia%20RC/anexo.jpeg',          caption:'Anexo'},
+        {src:'images/moradia%20RC/anexo_interior.jpeg', caption:'Anexo Interior'},
+        {src:'images/moradia%20RC/Video.mp4',           caption:'V\u00eddeo', type:'video'}
       ]
     )">
-      <img src="images/moradia RC/Video.mp4" alt="Moradia RC" loading="lazy"
-           onerror="this.src='images/moradia RC/alcado.jpeg'">
+      <img src="images/moradia%20RC/alcado.jpeg" alt="Moradia RC" loading="lazy">
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Moradia RC</div>
-        <div class="project-card-count">9 imagens</div>
+        <div class="project-card-count">10 imagens &middot; incl. vídeo</div>
         <div class="project-card-btn">Ver galeria &rarr;</div>
       </div>
     </div>
@@ -628,17 +699,17 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- MORADIA SÃO FRANCISCO -->
     <div class="project-card" onclick="openGallery(
       'Moradia S\u00e3o Francisco',
-      'Projecto de Arquitectura \São Francisco, Alcochete',
+      'Projecto de Arquitectura',
       [
-        {src:'images/moradia S\u00e3o Francisco/alcado.jpeg',       caption:'Al\u00e7ado'},
-        {src:'images/moradia S\u00e3o Francisco/alcado2.jpeg',      caption:'Al\u00e7ado 2'},
-        {src:'images/moradia S\u00e3o Francisco/piscina1.jpeg',     caption:'Piscina'},
-        {src:'images/moradia S\u00e3o Francisco/piscina2.jpeg',     caption:'Piscina 2'},
-        {src:'images/moradia S\u00e3o Francisco/piscina_noite.jpeg',  caption:'Piscina Nocturna'},
-        {src:'images/moradia S\u00e3o Francisco/piscina_noite2.jpeg', caption:'Piscina Nocturna 2'}
+        {src:'images/moradia%20S%C3%A3o%20Francisco/alcado.jpeg',        caption:'Al\u00e7ado'},
+        {src:'images/moradia%20S%C3%A3o%20Francisco/alcado2.jpeg',       caption:'Al\u00e7ado 2'},
+        {src:'images/moradia%20S%C3%A3o%20Francisco/piscina1.jpeg',      caption:'Piscina'},
+        {src:'images/moradia%20S%C3%A3o%20Francisco/piscina2.jpeg',      caption:'Piscina 2'},
+        {src:'images/moradia%20S%C3%A3o%20Francisco/piscina_noite.jpeg',  caption:'Piscina Nocturna'},
+        {src:'images/moradia%20S%C3%A3o%20Francisco/piscina_noite2.jpeg', caption:'Piscina Nocturna 2'}
       ]
     )">
-      <img src="images/moradia S\u00e3o Francisco/alcado.jpeg" alt="Moradia S\u00e3o Francisco" loading="lazy">
+      <img src="images/moradia%20S%C3%A3o%20Francisco/alcado.jpeg" alt="Moradia São Francisco" loading="lazy">
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Moradia S&atilde;o Francisco</div>
@@ -924,20 +995,50 @@ function openGallery(title, subtitle, images) {
 }
 
 function renderGallery() {
-  var img = galImages[galIdx];
-  document.getElementById('gal-main-img').src = img.src;
-  document.getElementById('gal-main-img').alt = img.caption;
+  var im = galImages[galIdx];
+  var mainArea = document.getElementById('gal-main-img');
+  var videoEl  = document.getElementById('gal-main-video');
+
+  if (im.type === 'video') {
+    mainArea.style.display = 'none';
+    if (!videoEl) {
+      var v = document.createElement('video');
+      v.id = 'gal-main-video';
+      v.controls = true; v.autoplay = false;
+      v.style.cssText = 'max-width:100%;max-height:100%;display:block;outline:none';
+      mainArea.parentNode.insertBefore(v, mainArea);
+    }
+    var vid = document.getElementById('gal-main-video');
+    vid.style.display = 'block';
+    vid.src = im.src;
+    vid.load();
+  } else {
+    if (videoEl) { videoEl.pause(); videoEl.style.display = 'none'; }
+    mainArea.style.display = 'block';
+    mainArea.src = im.src;
+    mainArea.alt = im.caption;
+  }
+
   document.getElementById('gal-counter').textContent = (galIdx+1) + ' / ' + galImages.length;
+  var cap = document.getElementById('gal-caption');
+  if (cap) cap.textContent = im.caption || '';
+
   var tb = document.getElementById('gal-thumbs');
   tb.innerHTML = '';
-  galImages.forEach(function(im, i) {
-    var t = document.createElement('img');
-    t.src = im.src; t.alt = im.caption;
-    t.className = 'gallery-thumb' + (i===galIdx?' active':'');
+  galImages.forEach(function(item, i) {
+    var t = document.createElement('div');
+    t.className = 'gallery-thumb-wrap' + (i===galIdx?' active':'');
     t.onclick = function(){ galIdx=i; renderGallery(); };
+    if (item.type === 'video') {
+      t.innerHTML = '<div style="width:80px;height:60px;background:#1a1815;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.5rem;">&#9654;</div>';
+    } else {
+      var img = document.createElement('img');
+      img.src = item.src; img.alt = item.caption;
+      img.style.cssText = 'width:80px;height:60px;object-fit:cover;display:block';
+      t.appendChild(img);
+    }
     tb.appendChild(t);
   });
-  // scroll active thumb into view
   var active = tb.querySelector('.active');
   if(active) active.scrollIntoView({block:'nearest',inline:'center'});
 }
@@ -958,9 +1059,13 @@ document.addEventListener('keydown', function(e) {
   if(e.key==='ArrowRight') galNext();
 });
 
-/* ══ NAVBAR ══ */
+/* ══ NAVBAR + BACK TO TOP ══ */
 var navbar = document.getElementById('navbar');
-window.addEventListener('scroll', function(){ navbar.classList.toggle('scrolled', window.scrollY>60); });
+var backTop = document.getElementById('backTop');
+window.addEventListener('scroll', function(){
+  navbar.classList.toggle('scrolled', window.scrollY>60);
+  backTop.classList.toggle('visible', window.scrollY>400);
+});
 
 /* ══ HAMBURGER ══ */
 var hamburger = document.getElementById('hamburger');
