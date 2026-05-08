@@ -210,7 +210,7 @@ section{padding:8rem 5rem;position:relative}
 
 /* ── SERVIÇOS ── */
 #servicos{background:var(--cream)}
-.servicos-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+.servicos-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);}
 .servico-item{padding:4rem;border:1px solid var(--line);margin:-1px 0 0 -1px;position:relative;overflow:hidden;transition:background 0.3s}
 .servico-item::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.4s}
 .servico-item:hover{background:var(--accent-dim)}
@@ -454,25 +454,19 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <div class="section-eyebrow"><span class="section-eyebrow-line"></span><span class="section-eyebrow-text" id="s1-label">01 &mdash; Sobre n&oacute;s</span></div>
     <h2 class="section-title" id="s1-title">Uma vis&atilde;o <em>diferente</em><br>da arquitectura.</h2>
   </div>
-  <<div class="sobre-grid">
-  <div class="sobre-text reveal">
-    <p class="sobre-quote" id="s-quote">&ldquo;Arquitectura como forma de transformar sonhos em espa&ccedil;os reais e funcionais.&rdquo;</p>
-    <p id="s-p1">Sou a Marina Carvalho, arquitecta e s&oacute;cio-gerente da Marina Carvalho &ndash; Arquitectura Lda, um gabinete sediado no cora&ccedil;&atilde;o do Montijo.</p>
-    <p id="s-p2">Com uma metodologia pr&oacute;pria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente &eacute; &uacute;nico, e por isso, o nosso servi&ccedil;o tamb&eacute;m o &eacute;.</p>
-    <p id="s-p3">Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto &mdash; &eacute; isso que d&aacute; sentido ao nosso trabalho.</p>
-  </div>
-
-  <div class="reveal">
-    <div class="sobre-foto">
-      <!-- Imagem inserida e ativa abaixo -->
-      <img src="images/Marina_Carvalho.png" alt="Marina Carvalho, Arquitecta">
+  <div class="sobre-grid">
+    <div class="sobre-text reveal">
+      <p class="sobre-quote" id="s-quote">&ldquo;Arquitectura como forma de transformar sonhos em espa&ccedil;os reais e funcionais.&rdquo;</p>
+      <p id="s-p1">Sou a Marina Carvalho, arquitecta e s&oacute;cio-gerente da Marina Carvalho &ndash; Arquitectura Lda, um gabinete sediado no cora&ccedil;&atilde;o do Montijo.</p>
+      <p id="s-p2">Com uma metodologia pr&oacute;pria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente &eacute; &uacute;nico, e por isso, o nosso servi&ccedil;o tamb&eacute;m o &eacute;.</p>
+      <p id="s-p3">Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto &mdash; &eacute; isso que d&aacute; sentido ao nosso trabalho.</p>
     </div>
-  </div>
-</div>
-        <!-- <img src="images/Marina_Carvalho.png" alt="Marina Carvalho, Arquitecta"> -->
+    <div class="reveal">
+      <div class="sobre-foto">
+        <img src="images/Marina_Carvalho.png" alt="Marina Carvalho, Arquitecta">
       </div>
       <div class="sobre-cards">
-        <div class="sobre-card"><div class="sobre-card-num">100%</div><div class="sobre-card-label" id="c1">Personalizado</div></div>
+        <div class="sobre-card"><div class="sobre-card-num">100+</div><div class="sobre-card-label" id="c1">Projectos Aprovados</div></div>
         <div class="sobre-card"><div class="sobre-card-num">&#8734;</div><div class="sobre-card-label" id="c2">Dedica&ccedil;&atilde;o</div></div>
         <div class="sobre-card"><div class="sobre-card-num" style="font-size:1.6rem;font-style:italic">Montijo</div><div class="sobre-card-label" id="c3">Grande Lisboa &middot; Portugal</div></div>
       </div>
@@ -508,7 +502,12 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <div class="servico-item reveal">
       <div class="servico-num">04 &mdash;</div>
       <h3 class="servico-title" id="sv4t">Projectos de Especialidades</h3>
-      <p class="servico-desc" id="sv4d">Estruturas, instala&ccedil;&otilde;es el&eacute;ctricas, hidr&aacute;ulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global.</p>
+      <p class="servico-desc" id="sv4d">Estruturas, AVAC, &Aacute;guas e Esgotos, Ac&uacute;stico, ITED, G&aacute;s, T&eacute;rmico e Seguran&ccedil;a Contra Inc&ecirc;ndios. Cada especialidade integrada harmoniosamente no projecto global.</p>
+      <div class="servico-item reveal">
+      <div class="servico-num">05 &mdash;</div>
+      <h3 class="servico-title" id="sv5t">Certifica&ccedil;&atilde;o Energ&eacute;tica</h3>
+      <p class="servico-desc" id="sv5d">Emiss&atilde;o e renova&ccedil;&atilde;o de certificados energ&eacute;ticos para im&oacute;veis residenciais e n&atilde;o residenciais, em conformidade com o SCE &mdash; Sistema de Certifica&ccedil;&atilde;o Energ&eacute;tica dos Edif&iacute;cios.</p>
+    </div>
     </div>
   </div>
 </section>
@@ -523,11 +522,11 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
 
   <div class="portfolio-stats reveal">
     <div>
-      <div class="portfolio-stat-num">6</div>
+      <div class="portfolio-stat-num">7</div>
       <div class="portfolio-stat-label">Projectos</div>
     </div>
     <div>
-      <div class="portfolio-stat-num">58+</div>
+      <div class="portfolio-stat-num">64+</div>
       <div class="portfolio-stat-label">Imagens</div>
     </div>
   </div>
@@ -567,7 +566,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- EDIFÍCIO SALDANHA -->
     <div class="project-card" onclick="openGallery(
       'Edif\u00edcio Saldanha',
-      'Projecto de Arquitectura \u00b7 Lisboa',
+      'Projecto de Arquitectura \u00b7 Montijo',
       [
         {src:'images/Edificio_Saldanha/Alcado_frontal.jpeg',   caption:'Al\u00e7ado Frontal'},
         {src:'images/Edificio_Saldanha/Alcado_lateral.jpeg',   caption:'Al\u00e7ado Lateral'},
@@ -594,7 +593,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Edif&iacute;cio Saldanha</div>
-        <div class="project-card-count">19 imagens &middot; Lisboa</div>
+        <div class="project-card-count">19 imagens &middot; Montijo</div>
         <div class="project-card-btn">Ver galeria &rarr;</div>
       </div>
     </div>
@@ -602,7 +601,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- GUESTHOUSE -->
     <div class="project-card" onclick="openGallery(
       'Guesthouse',
-      'Projecto de Arquitectura',
+      'Projecto de Arquitectura \u00b7 Montijo',
       [
         {src:'images/guesthouse/Alcado.jpeg',                  caption:'Al\u00e7ado'},
         {src:'images/guesthouse/Alcado-noite.jpeg',            caption:'Al\u00e7ado Nocturno'},
@@ -616,7 +615,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Guesthouse</div>
-        <div class="project-card-count">6 imagens</div>
+        <div class="project-card-count">6 imagens &middot; Montijo</div>
         <div class="project-card-btn">Ver galeria &rarr;</div>
       </div>
     </div>
@@ -624,7 +623,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- MORADIA JD -->
     <div class="project-card" onclick="openGallery(
       'Moradia JD',
-      'Projecto de Arquitectura',
+      'Projecto de Arquitectura \u00b7 Afonsoeiro, Montijo',
       [
         {src:'images/moradia%20JD/alcado.jpeg',           caption:'Al\u00e7ado'},
         {src:'images/moradia%20JD/alcado_lateral.jpeg',   caption:'Al\u00e7ado Lateral'},
@@ -638,7 +637,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Moradia JD</div>
-        <div class="project-card-count">6 imagens</div>
+        <div class="project-card-count">6 imagens &middot; Afonsoeiro, Montijo</div>
         <div class="project-card-btn">Ver galeria &rarr;</div>
       </div>
     </div>
@@ -646,7 +645,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- MORADIA JR -->
     <div class="project-card" onclick="openGallery(
       'Moradia JR',
-      'Projecto de Arquitectura',
+      'Projecto de Arquitectura \u00b7 Algeruz, Palmela',
       [
         {src:'images/moradia%20JR/Alcado_frontal.jpeg',      caption:'Al\u00e7ado Frontal'},
         {src:'images/moradia%20JR/Alcado_lateral.jpeg',      caption:'Al\u00e7ado Lateral'},
@@ -666,7 +665,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Moradia JR</div>
-        <div class="project-card-count">12 imagens</div>
+        <div class="project-card-count">12 imagens &middot; Algeruz, Palmela</div>
         <div class="project-card-btn">Ver galeria &rarr;</div>
       </div>
     </div>
@@ -674,7 +673,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- MORADIA RC -->
     <div class="project-card" onclick="openGallery(
       'Moradia RC',
-      'Projecto de Arquitectura',
+      'Projecto de Arquitectura \u00b7 Figueiras, Peg\u00f5es',
       [
         {src:'images/moradia%20RC/alcado.jpeg',         caption:'Al\u00e7ado'},
         {src:'images/moradia%20RC/alcado1.jpeg',        caption:'Al\u00e7ado 2'},
@@ -692,7 +691,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Moradia RC</div>
-        <div class="project-card-count">10 imagens &middot; incl. vídeo</div>
+        <div class="project-card-count">10 imagens &middot; Figueiras, Peg&otilde;es</div>
         <div class="project-card-btn">Ver galeria &rarr;</div>
       </div>
     </div>
@@ -700,7 +699,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
     <!-- MORADIA SÃO FRANCISCO -->
     <div class="project-card" onclick="openGallery(
       'Moradia S\u00e3o Francisco',
-      'Projecto de Arquitectura',
+      'Projecto de Arquitectura \u00b7 S\u00e3o Francisco, Alcochete',
       [
         {src:'images/moradia%20S%C3%A3o%20Francisco/alcado.jpeg',        caption:'Al\u00e7ado'},
         {src:'images/moradia%20S%C3%A3o%20Francisco/alcado2.jpeg',       caption:'Al\u00e7ado 2'},
@@ -714,7 +713,7 @@ footer{background:#100E0C;padding:2.5rem 5rem;display:flex;justify-content:space
       <div class="project-card-overlay">
         <div class="project-card-tag">Projecto de Arquitectura</div>
         <div class="project-card-title">Moradia S&atilde;o Francisco</div>
-        <div class="project-card-count">6 imagens</div>
+        <div class="project-card-count">6 imagens &middot; S&atilde;o Francisco, Alcochete</div>
         <div class="project-card-btn">Ver galeria &rarr;</div>
       </div>
     </div>
@@ -825,7 +824,7 @@ var T = {
     p2:'Com uma metodologia própria e um olhar atento a cada detalhe, desenvolvemos projectos precisos, personalizados e com alma. Cada cliente é único, e por isso, o nosso serviço também o é.',
     p3:'Nada nos motiva mais do que ver o brilho nos olhos dos nossos clientes quando entregamos um projecto — é isso que dá sentido ao nosso trabalho.',
     foto_l:'Fotografia · Em breve',
-    c1:'Personalizado', c2:'Dedicação', c3:'Grande Lisboa · Portugal',
+    c1:'100+ Projectos Aprovados', c2:'Dedicação', c3:'Grande Lisboa · Portugal',
     s2l:'02 — Serviços', s2t:'O que <em>fazemos</em><br>por si.',
     sv1t:'Projectos de Arquitectura',
     sv1d:'Desenvolvemos projectos completos e personalizados, desde a análise inicial até à execução, garantindo excelência em cada etapa do processo.',
@@ -835,7 +834,9 @@ var T = {
     sv3t:'Fiscalização de Obras',
     sv3d:'Monitorizamos todas as fases da construção, assegurando a conformidade com as especificações técnicas e normas legais. Verificamos a qualidade dos materiais e da mão de obra.',
     sv4t:'Projectos de Especialidades',
-    sv4d:'Estruturas, instalações eléctricas, hidráulicas, HVAC e muito mais. Cada especialidade integrada harmoniosamente no projecto global.',
+    sv4d:'Estruturas, AVAC, Águas e Esgotos, Acústico, ITED, Gás, Térmico e Segurança Contra Incêndios. Cada especialidade integrada harmoniosamente no projecto global.',
+    sv5t:'Certificação Energética',
+    sv5d:'Emissão e renovação de certificados energéticos para imóveis residenciais e não residenciais, em conformidade com o SCE — Sistema de Certificação Energética dos Edifícios.',
     s3l:'03 — Portfolio', s3t:'Os nossos <em>projectos</em>.',
     port_intro:'Cada obra conta uma história. Clique num projecto para ver a galeria completa.',
     s4l:'04 — Contacto', s4t:'Vamos <em>criar</em><br>algo juntos.',
@@ -864,7 +865,7 @@ var T = {
     p2:'With a unique methodology and close attention to every detail, we develop precise, personalised projects with soul. Every client is unique, and our service reflects that.',
     p3:'Nothing motivates us more than seeing the joy on our clients faces when we deliver a project — that is what gives meaning to our work.',
     foto_l:'Photograph · Coming soon',
-    c1:'Personalised', c2:'Dedication', c3:'Greater Lisbon · Portugal',
+    c1:'100+ Approved Projects', c2:'Dedication', c3:'Greater Lisbon · Portugal',
     s2l:'02 — Services', s2t:'What we <em>do</em><br>for you.',
     sv1t:'Architecture Projects',
     sv1d:'We develop complete, personalised projects from initial analysis through to execution, ensuring excellence at every stage of the process.',
@@ -874,7 +875,9 @@ var T = {
     sv3t:'Construction Supervision',
     sv3d:'We monitor all phases of construction, ensuring compliance with technical specifications and legal standards, and verifying the quality of materials and workmanship.',
     sv4t:'Specialist Engineering',
-    sv4d:'Structural, electrical, hydraulic, HVAC and more. Each specialty integrated harmoniously into the overall project.',
+    sv4d:'Structural, HVAC, Water & Drainage, Acoustics, ITED, Gas, Thermal and Fire Safety. Each specialty integrated harmoniously into the overall project.',
+    sv5t:'Energy Certification',
+    sv5d:'Issuance and renewal of energy certificates for residential and non-residential properties, in compliance with the SCE — Building Energy Certification System.',
     s3l:'03 — Portfolio', s3t:'Our <em>projects</em>.',
     port_intro:'Every building tells a story. Click a project to view the full gallery.',
     s4l:'04 — Contact', s4t:'Let us <em>create</em><br>something together.',
@@ -903,7 +906,7 @@ var T = {
     p2:'Con una metodología propia y una atención especial a cada detalle, desarrollamos proyectos precisos, personalizados y con alma. Cada cliente es único, y por eso nuestro servicio también lo es.',
     p3:'Nada nos motiva más que ver la alegría en los ojos de nuestros clientes cuando entregamos un proyecto — eso es lo que da sentido a nuestro trabajo.',
     foto_l:'Fotografía · Próximamente',
-    c1:'Personalizado', c2:'Dedicación', c3:'Gran Lisboa · Portugal',
+    c1:'100+ Projectos Aprovados', c2:'Dedicación', c3:'Gran Lisboa · Portugal',
     s2l:'02 — Servicios', s2t:'Lo que <em>hacemos</em><br>por usted.',
     sv1t:'Proyectos de Arquitectura',
     sv1d:'Desarrollamos proyectos completos y personalizados, desde el análisis inicial hasta la ejecución, garantizando excelencia en cada etapa del proceso.',
@@ -913,7 +916,9 @@ var T = {
     sv3t:'Supervisión de Obras',
     sv3d:'Monitorizamos todas las fases de la construcción, asegurando el cumplimiento de las especificaciones técnicas y las normas legales, verificando la calidad de los materiales.',
     sv4t:'Proyectos de Especialidades',
-    sv4d:'Estructuras, instalaciones eléctricas, hidráulicas, HVAC y mucho más. Cada especialidad integrada armoniosamente en el proyecto global.',
+    sv4d:'Estructuras, HVAC, Aguas y Saneamiento, Acústica, ITED, Gas, Térmico y Seguridad Contra Incendios. Cada especialidad integrada armoniosamente en el proyecto global.',
+    sv5t:'Certificación Energética',
+    sv5d:'Emisión y renovación de certificados energéticos para inmuebles residenciales y no residenciales, conforme al SCE — Sistema de Certificación Energética de Edificios.',
     s3l:'03 — Portfolio', s3t:'Nuestros <em>proyectos</em>.',
     port_intro:'Cada obra cuenta una historia. Haga clic en un proyecto para ver la galería completa.',
     s4l:'04 — Contacto', s4t:'Vamos a <em>crear</em><br>algo juntos.',
@@ -962,6 +967,7 @@ function setLang(l) {
   tx('sv2t',t.sv2t); tx('sv2d',t.sv2d);
   tx('sv3t',t.sv3t); tx('sv3d',t.sv3d);
   tx('sv4t',t.sv4t); tx('sv4d',t.sv4d);
+  if(t.sv5t){tx('sv5t',t.sv5t); tx('sv5d',t.sv5d);}
   var li=document.querySelectorAll('#sv1-list li');
   t.sv1i.forEach(function(v,i){ if(li[i]) li[i].textContent=v; });
   tx('s3-label',t.s3l); th('s3-title',t.s3t);
