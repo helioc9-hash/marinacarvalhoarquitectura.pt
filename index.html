@@ -1069,6 +1069,7 @@ var galImages = [];
 var galIdx = 0;
 
 function openGallery(title, subtitle, images) {
+  medir('abrir_projecto', {projecto: title});
   galImages = images;
   galIdx = 0;
   document.getElementById('gal-title').textContent = title;
@@ -1177,6 +1178,21 @@ var obs = new IntersectionObserver(function(entries){
 },{threshold:0.06,rootMargin:'0px 0px -50px 0px'});
 reveals.forEach(function(el){ obs.observe(el); });
 
+/* ══ ANALYTICS: CONTACTOS E CLIQUES ══ */
+function medir(nome, dados){
+  try { if (typeof gtag === 'function') gtag('event', nome, dados || {}); } catch(e) {}
+}
+document.addEventListener('click', function(e){
+  var a = e.target.closest ? e.target.closest('a[href]') : null;
+  if (!a) return;
+  var h = a.getAttribute('href') || '';
+  if (h.indexOf('tel:') === 0) medir('clique_telefone', {idioma: lang});
+  else if (h.indexOf('mailto:') === 0) medir('clique_email', {idioma: lang});
+  else if (h.indexOf('wa.me') > -1 || h.indexOf('whatsapp') > -1) medir('clique_whatsapp', {idioma: lang});
+  else if (h.indexOf('maps.') > -1 || h.indexOf('google.com/maps') > -1) medir('clique_mapa', {idioma: lang});
+  else if (/instagram|linkedin|linktr|facebook/.test(h)) medir('clique_rede_social', {rede: (h.match(/instagram|linkedin|linktr|facebook/) || [''])[0]});
+});
+
 /* ══ FORMULÁRIO ══ */
 var form = document.getElementById('contactForm');
 if(form){
@@ -1191,7 +1207,11 @@ if(form){
     btn.disabled = true;
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
       .then(function(r){
-        if(r.ok){ form.reset(); ok.style.display='block'; ok.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+        if(r.ok){
+          var sel = document.getElementById('f-select');
+          medir('contacto_formulario', {assunto: sel ? sel.options[sel.selectedIndex].text : '', idioma: lang});
+          form.reset(); ok.style.display='block'; ok.scrollIntoView({behavior:'smooth',block:'nearest'});
+        }
         else { throw new Error(); }
       })
       .catch(function(){ err.style.display='block'; })
